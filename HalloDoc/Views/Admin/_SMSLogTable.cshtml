@@ -1,0 +1,185 @@
+﻿@model List<DataLayer.DTO.AdminDTO.SMSLogData>
+@{
+    int i = 1;
+}
+
+<div class="d-lg-block d-none ps-0 pe-0">
+    <table class="table " id="resultTable" data-count="@Model.Count">
+        <thead>
+            <tr class="table-secondary bg-body-tertiary">
+                <th>
+                    Recepient
+                </th>
+                <th>
+                    Action
+                </th>
+                <th>
+                    Role Name
+                </th>
+                <th>
+                    Mobile Number
+                </th>
+                <th>
+                    Created Date <i class="bi bi-arrow-down"></i>
+                </th>
+                <th>
+                    Sent Date
+                </th>
+                <th>
+                    Sent
+                </th>
+                <th>
+                    Sent Tries
+                </th>
+                <th>
+                    Confirmation Number
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count > 0)
+            {
+                @foreach (var item in Model)
+                {
+                    <tr class="tableRow">
+                        <td>
+                            @item.Recepient
+                        </td>
+                        <td>
+                            @item.Action
+                        </td>
+                        <td>
+                            @item.RoleName
+                        </td>
+                        <td>
+                            @item.Mobile
+                        </td>
+                        <td>
+                            @item.CreatedDate.ToShortDateString()
+                        </td>
+                        <td>
+                            @item.SentDate.ToShortDateString()
+                        </td>
+                        <td>
+                            <span>Yes</span>
+
+                        </td>
+                        <td>
+                            <span>1</span>
+                        </td>
+                        <td>
+                            <span>-</span>
+
+                        </td>
+                    </tr>
+
+                }
+
+            }
+            else
+            {
+                <tr>
+                    <td><p>No data found</p></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<div class="d-lg-none" id="accordianData">
+    <div class="accordion accordion-flush " id="accordionFlushExample">
+        @if (Model.Count > 0)
+        {
+            @foreach (var item in Model)
+            {
+                <div class="accordion-item accordian-back">
+                    <h2 class="accordi on-header">
+                        <button class="accordion-button collapsed accordian-back d-block" type="button" data-bs-toggle="collapse" data-bs-target="#flush-@i" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <div class="container ">
+                                <div>@item.Recepient</div>
+                                <br>
+                                <div>
+                                    Action Name: <span class="fw-bold">@item.Action</span><br /><br />
+                                    Email: <span class="fw-bold">@item.Mobile</span>
+                                </div>
+                            </div>
+
+                        </button>
+                    </h2>
+
+                    <div id="flush-@i" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+
+                        <div class="accordion-body ">
+                            <div class="mt-2">
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-solid fa-user text-info"></i>
+                                    </div>
+                                    <p class="mt-1"><span class="text-muted">Role Name: </span>      @item.RoleName</p>
+                                </div>
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-regular fa-calendar-days text-info"></i>
+
+                                    </div>
+                                    <p class="mt-1"><span class="text-muted">Created Date :</span>    @item.CreatedDate</p>
+                                </div>
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-regular fa-calendar-days text-info"></i>
+
+                                    </div>
+                                    <p class="mt-1"><span class="text-muted">Sent Date :</span>    @item.SentDate</p>
+                                </div>
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-solid fa-check text-info"></i>
+
+                                    </div>
+                                    <p class="mt-1"><span class="text-muted">Sent :</span>  Yes</p>
+                                </div>
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-regular fa-envelope text-info"></i>
+
+                                    </div>
+                                    <p class="mt-1"><span class="text-muted">Sent Tries :</span>  1</p>
+                                </div>
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-solid fa-check text-info"></i>
+
+                                    </div>
+                                    <p class="mt-1"><span class="text-muted">Confirmation number :</span>  -</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                i++;
+            }
+
+        }
+        else
+        {
+            <p>No data found</p>
+        }
+
+    </div>
+</div>

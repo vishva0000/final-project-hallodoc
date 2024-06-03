@@ -1,0 +1,194 @@
+﻿@model DataLayer.DTO.AdminDTO.ViewNotesData
+@inject IHttpContextAccessor Accessor
+
+@{
+    Layout = "_AdminPhysicianHeader";
+}
+<div>
+
+
+   
+    <div class="d-flex justify-content-center mt-3">
+        <div class="container">
+
+
+            <div class="d-inline-flex justify-content-between w-100 mb-2">
+
+                <h2 class="m-2">Notes</h2>
+                <div class="ml-auto">
+
+
+                    <button class="  back-btn btn-outline-info back mt-2 rounded p-2 "
+                            onclick="back()">
+                        &lt Back
+                    </button>
+                </div>
+            </div>
+            <br />
+
+            <div class="row">
+              
+                <div class="col-md-6 p-3 ">
+                    <div class="row bg-white rounded shadow">
+                        <div class="col-1 ">
+                            <div class="m-2">
+                                <i style="font-weight: bold " class="bi bi-arrow-left-right"></i>
+                            </div>
+                        </div>
+                        <div class="col-11 ">
+                            <div class="m-2">
+                                <p style="font-weight: bold" class="">Transfer Notes</p>
+                                @if (Model != null)
+                                {
+                                    @if (Model.transfernote!=null && Model.transfernote.Count() != 0)
+                                    {
+                                        @foreach(var note in Model.transfernote)
+                                        {
+                                            <p>@note</p>
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <p>-</p>
+                                    }
+
+                                }
+                                else
+                                {
+                                    <p>-</p>
+                                }
+
+                            </div>
+                        </div>
+
+                    </div>
+                   
+                </div>
+                <div class="col-md-6  p-3 ">
+                    <div class="row bg-white rounded shadow ">
+
+                        <div class="col-1">
+                            <div class="m-2">
+                                <i style="font-weight: bold " class="bi bi-arrow-left-right"></i>
+                            </div>
+                        </div>
+                        <div class="col-11 ">
+                            <div class="m-2">
+                                <p style="font-weight: bold" class="">Physician Notes</p>
+                                @if (Model != null)
+                                {
+                                    @if (Model.physicianNotes != null)
+                                    {
+                                        <p>@Model.physicianNotes</p>
+                                    }
+                                    else
+                                    {
+                                        <p>-</p>
+                                    }
+                                }
+                                else
+                                {
+                                    <p>-</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                 
+                </div>                 
+                <div class="col-md-6 p-3">
+                    <div class=" row bg-white rounded shadow">
+                        <div class="col-1 bg-white rounded">
+                            <div class="m-2">
+                                <i style="font-weight: bold " class="bi bi-arrow-left-right"></i>
+
+                            </div>
+                        </div>
+                        <div class="col-11 bg-white rounded">
+                            <div class="m-2">
+                                <p style="font-weight: bold" class="">Admin Notes</p>
+                                @if (Model != null)
+                                {
+                                    @if (Model.adminNotes != null)
+                                    {
+                                        <p>@Model.adminNotes</p>
+                                    }
+                                    else
+                                    {
+                                        <p>-</p>
+                                    }
+
+                                }
+                                else
+                                {
+                                    <p>-</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>
+              
+
+
+            </div>
+          
+         
+            <br />
+
+            @if (Accessor.HttpContext.Request.Cookies["Role"] == "admin")
+            {
+                <form asp-action="ViewNotes" method="post" asp-controller="Admin">
+                    <div class="row bg-white rounded-3 shadow">
+                        <div class="col-md-12 p-4 ">
+                            <input name="Role" type="number" value="1" hidden/>
+                            <div class="form-floating">
+                                <textarea class="form-control"
+                                          asp-for="Additional"
+                                          placeholder="Leave a comment here"
+                                          id="floatingTextarea"
+                                          style="height: 250px"></textarea>
+                                <label for="floatingTextarea">Admin Notes</label>
+                            </div>
+                            <br />
+                            <div class="w-100 d-flex justify-content-end">
+                                <button class="btn btn-info text-white" type="submit">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            }
+            @if (Accessor.HttpContext.Request.Cookies["Role"] == "provider")
+            {
+
+                <form asp-action="ViewNotes" method="post" asp-controller="Admin">
+                    <div class="row bg-white rounded-3 shadow">
+                        <input name="Role" type="number" value="2" hidden />
+
+                        <div class="col-md-12 p-4 ">
+                            <div class="form-floating">
+                                <textarea class="form-control"
+                                          asp-for="Additional"
+                                          placeholder="Leave a comment here"
+                                          id="floatingTextarea"
+                                          style="height: 250px"></textarea>
+                                <label for="floatingTextarea">Provider Notes</label>
+                            </div>
+                            <br />
+                            <div class="w-100 d-flex justify-content-end">
+                                <button class="btn btn-info text-white" type="submit">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            }
+         
+             
+         
+           
+
+        </div>
+    </div>
+</div>

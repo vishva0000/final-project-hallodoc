@@ -1,0 +1,95 @@
+﻿@model List<DataLayer.DTO.AdminDTO.ShiftTableData>
+@{
+}
+
+<div class="mt-3 d-lg-flex d-none">
+    <table class="table table-responsive">
+        <thead class="bg-light p-2">
+            <tr class="table-secondary bg-body-tertiary">
+                <th class="p-2">
+                    <input id="All" class="form-check-input " type="checkbox" value="0">
+                </th>
+                <th class="p-2">
+                    Name
+                </th>
+                <th class="p-2">
+                    Day
+                </th>
+                <th class="p-2">
+                    Time
+                </th>
+                <th class="p-2">
+                    Region
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count != 0)
+            {
+                @foreach (var item in Model)
+                {
+                    <tr class="shiftRow">
+                        <td> <input class="form-check-input selectShift deskselect" value="@item.shiftId" type="checkbox"></td>
+                        <td>@item.phyName</td>
+                        <td>@item.shiftDate.ToShortDateString()</td>
+                        <td>@item.startTime.ToString("hh:mm tt") - @item.endTime.ToString("hh:mm tt")</td>
+                        <td>@item.region</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td>No data found</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="d-lg-none">
+    @if (Model.Count != 0)
+    {
+        @foreach (var obj in Model)
+        {
+            var acoid = obj.shiftId;
+            <div class="accordion " id="accordionExample">
+
+                <div class="accordion-item accordian-back ">
+                    <div class="accordion-header">
+                        <div class="d-inline-flex m-2 p-3 align-items-center">
+                            <input class="form-check-input mobselect m-2" value="@obj.shiftId" type="checkbox">
+                            <p class="m-2">@obj.phyName</p>
+                        </div>
+                        <div class="p-2">
+                            <p>@obj.shiftDate.ToShortDateString()</p>
+                            <p>@obj.startTime.ToString("hh:mm tt") - @obj.endTime.ToString("hh:mm tt")</p>
+                            <p>@obj.region</p>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        }
+
+    }
+    else
+    {
+        <p>No data found</p>
+    }
+
+</div>
+
+<script>
+    $("#All").click(function () {
+        $(".selectShift").prop('checked', $(this).prop('checked'));
+    });
+</script>

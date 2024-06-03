@@ -1,0 +1,159 @@
+﻿@model DataLayer.DTO.AdminDTO.CreateBusinessData
+@{
+    Layout = "_AdminPhysicianHeader";
+}
+
+<div>
+  
+    <div class="container">
+        <div class="d-inline-flex align-items-center w-100 mt-3">
+            <h3 class="fw-bold">Update Business</h3>
+            <div class="flex-grow-1 text-end">
+                <button class="  back-btn btn-outline-info back mt-2 rounded p-2 "
+                        onclick="back()">
+                    &lt Back
+                </button>
+            </div>
+        </div>
+        <div class="bg-white shadow rounded mt-2">
+            <div class="ps-3 pt-3">
+                <p class="fw-bold fs-4">Submit Information</p>
+
+            </div>
+            <form asp-action="UpdateBusiness" asp-controller="Admin" method="post">
+                <div class="row p-3">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="number" asp-for="vendorid" hidden/>
+                            <input type="text"
+                                   asp-for="BusinessName"
+                                   class="form-control input"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Business Name</label>
+                            <span asp-validation-for="BusinessName" class="text-danger"> </span>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <select asp-for="Professionid" class="form-select h-100 professionDrop" id="fregion" aria-label="Default select example ">
+                                @foreach(var items in Model.Professions)
+                                {
+                                    <option value="@items.profid" >@items.name</option>
+
+                                }
+
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                   asp-for="faxNumber"
+                                   class="form-control input"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Fax Number</label>
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                   asp-for="phoneNumber"
+                                   class="form-control input"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Phone Number</label>
+                            <span asp-validation-for="phoneNumber" class="text-danger"> </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                   asp-for="Email"
+                                   class="form-control input"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Email</label>
+                            <span asp-validation-for="Email" class="text-danger"> </span>
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                   asp-for="BusinessContact"
+                                   class="form-control input"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Business Contact</label>
+                            <span asp-validation-for="BusinessContact" class="text-danger"> </span>
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                   asp-for="street"
+                                   class="form-control input"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Street</label>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                   asp-for="City"
+                                   class="form-control input"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">City</label>
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                   asp-for="state"
+                                   class="form-control input"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">State</label>
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                   asp-for="Zip"
+                                   class="form-control input"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Zip/postal</label>
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 d-flex justify-content-end">
+                        <button class="btn btn-info text-white me-2" type="submit">Save</button>
+                        <a class="btn btn-outline-info ms-2 " asp-action="Vendors" asp-controller="Admin">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

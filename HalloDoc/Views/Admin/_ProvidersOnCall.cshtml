@@ -1,0 +1,53 @@
+﻿@model List<DataLayer.DTO.AdminDTO.OncallProviderData>
+
+<div>
+    <div class="">
+        <p class="fs-4 fw-bold">MDs On Call</p>
+        <div class="row row-cols-md-3 row-cols-1">
+            @foreach (var item in Model)
+            {
+                @if (item.status == 1)
+                {
+                    <div class="col d-inline-flex p-2">
+                        <div class="ms-2 me-2">
+                            <img style="width:65px;" class="img-fluid" src="/uploads/Screenshot (1).png">
+                        </div>
+                        <div>
+                            <p>@item.Name</p>
+
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    <div class="">
+        <p class="fs-4 fw-bold">Physicians Off Duty</p>
+        <div class="row row-cols-md-3 row-cols-1">
+            @foreach (var item in Model)
+            {
+                @if (item.status == 2)
+                {
+                    <div class="col d-inline-flex p-2 align-items-center">
+                        <div class=" ms-2 me-2">
+                            @if (item.Photo != null)
+                            {
+                                var str = "\\uploads\\Physician\\" + item.Photo;
+                                <img style="width:65px; border-radius:100px;" class="img-fluid " src=@str>
+                            }
+                            else
+                            {
+                                <img style="width:65px; border-radius:100px;" class="img-fluid" src="/images/ProfilePhoto.png">
+                            }
+                        </div>
+                        <div>
+                            <p>@item.Name</p>
+
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

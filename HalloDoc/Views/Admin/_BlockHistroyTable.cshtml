@@ -1,0 +1,152 @@
+﻿@model List<DataLayer.DTO.AdminDTO.BlockHistroyData>
+@{
+    int i = 1;
+}
+
+<div class="d-lg-flex d-none">
+    <table class="table">
+        <thead>
+            <tr class="bg-light">
+                <td>Patient Name</td>
+                <td>Phone Number</td>
+                <td>Email</td>
+                <td>Created Date</td>
+                <td>Notes</td>
+                <td>is Active</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count > 0)
+            {
+                @foreach(var item in Model)
+                {
+                    <tr class="tableRow">
+                        <td>@item.Name</td>
+                        <td>@item.Phone</td>
+                        <td>@item.Email</td>
+                        <td>@item.CreatedDate.ToShortDateString()</td>
+                        <td>
+                            @if(item.Notes!= null)
+                            {
+                                <p> @item.Notes</p>
+                            }
+                            else
+                            {
+                                <p>-</p>
+                            }
+                        </td>
+                        <td><input type="checkbox" checked="@item.isActive" disabled/></td>
+                        <td><button class="btn btn-outline-info Unblock" data-reqid="@item.RequestId">Unblock</button></td>
+                    </tr>
+                }
+                
+            }
+            else
+            {
+                <tr>
+                    <td><p>No data found</p></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="d-lg-none">
+    @if (Model.Count > 0)
+    {
+        @foreach (var item in Model)
+        {
+            <div class="accordion  " id="accordionExample">
+
+                <div class="accordion-item accordian-back ">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button accordian-back collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#id-@i" aria-expanded="false" aria-controls="collapseTwo">
+                            <div>
+                                <p>@item.Name</p>
+                                <p><span>@item.Email</span></p>
+                            </div>
+
+
+
+
+                        </button>
+                    </h2>
+
+                    <div id="id-@i" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+
+
+                        <div class="accordion-body pt-0">
+                            <div class="mt-2">
+                               
+
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-solid fa-phone text-info"></i>
+
+                                    </div>
+                                    <p class="mt-1"><span class="text-muted">Phone:</span> @item.Phone</p>
+                                </div>
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-regular fa-calendar-days text-info"></i>
+
+
+                                    </div>
+                                    <p class="mt-1"><span class="text-muted">Created Date:</span> @item.CreatedDate.ToShortDateString()</p>
+                                </div>
+                                
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-solid fa-book text-info"></i>
+
+                                    </div>
+                                    <p class="mt-1"><span class="text-muted">Notes:</span> @item.Notes</p>
+                                </div> 
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-solid fa-check text-info"></i>
+
+                                    </div>
+                                    <p class="mt-1"><span class="text-muted">Is Active:</span>
+                                        @if(item.isActive){
+                                            <span>Yes</span>
+                                        }
+                                        else
+                                        {
+                                            <span>No</span>
+                                        }
+                                    </p>
+                                </div>
+
+
+                                <div class="d-flex justify-content-end align-items-center">
+
+                                    <button class="btn btn-outline-info Unblock" data-reqid="@item.RequestId">Unblock</button>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            i++;
+        }
+    }
+    else
+    {
+        <p>No data found</p>
+    }
+</div>

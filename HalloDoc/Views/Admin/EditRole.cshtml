@@ -1,0 +1,170 @@
+﻿@model DataLayer.DTO.AdminDTO.RoleData
+@{
+    Layout = "_AdminPhysicianHeader";
+}
+<div>
+   
+
+    <div class="d-flex justify-content-center mt-3">
+        <div class="container">
+
+            <div class="d-inline-flex justify-content-between w-100">
+
+                <h3 class="m-2">Edit Role</h3>
+                <div class="ml-auto">
+
+                    <button class="  back-btn btn-outline-info back mt-2 rounded p-2 "
+                            onclick="back()">
+                        &lt Back
+                    </button>
+                </div>
+            </div>
+            <br />
+
+
+            <div class="bg-white rounded shadow p-4 mt-3">
+
+                <p style="font-weight: bold; font-size:1.5rem">Details</p>
+                <br />
+                <form class="EditRolesForm" asp-action="EditRole" asp-controller="Admin" method="post">
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text"
+                                       class="form-control "
+                                       id="contact"
+                                       asp-for="RoleName"
+                                       name="RoleName"
+                                       placeholder="name@example.com" />
+                                <label for="floatingInput">Role Name</label>
+                            </div>
+                            <input type="number" class="roleid" asp-for="RoleId" hidden/>
+                        </div>
+
+                        <div class="col-md-6">
+                            <select asp-for="AccType" style="height:55px;"  class="form-select SelectACType" aria-label="Default select example">
+                                
+                                <option value="1">Admin</option>
+                                <option value="2">Physician</option>
+                                <option value="3">Patient</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class=" d-flex flex-wrap" id="menu">
+                    </div>
+                    <div class="w-100 d-flex justify-content-end">
+                        <button class="btn btn-info text-white m-2 saveRole" type="submit">Save</button>
+                        <button class="btn btn-outline-info m-2 " asp-action="ManageAccess" asp-controller="Admin">Cancel</button>
+
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+    var actype = $('.SelectACType').val();
+    $(document).ready(function () {
+        $('#menu').empty();
+        var id = $('.roleid').val();
+        $.ajax({
+            method: "GET",
+            url: "/Admin/SelectedMenu",
+            data: { actype: actype , roleid: id},
+            success: function (result) {
+                result.forEach(function (res) {
+                    var checkbox = $('<input>', {
+                        type: 'checkbox',
+                        class: 'form-check-input ',
+                        name: 'selectedMenu',
+                        value: res.id,
+                        id: 'checkbox_' + res.id
+                    });
+
+                    if (res.isSelected) {
+                        checkbox.prop('checked', true);
+                    }
+
+                    var label = $('<label>', {
+                        class: 'form-check-label',
+                        for: 'checkbox_' + res.id,
+                        text: res.name
+                    });
+
+                    var div = $('<div>', {
+                        class: 'form-check ms-2 me-2'
+                    });
+
+                    div.append(checkbox, label);
+                    $('#menu').append(div);
+                });
+            }
+        });
+
+
+        // $(document).on("click", ".contact", OpenContactProvider);
+
+
+    });
+
+
+    $('.SelectACType').change(function () {
+        actype = $('.SelectACType').val();
+        var id = $('.roleid').val();
+        $('#menu').empty();
+        $.ajax({
+            method: "GET",
+            url: "/Admin/SelectedMenu",
+            data: { actype: actype, roleid: id },
+            success: function (result) {
+                result.forEach(function (res) {
+                    var checkbox = $('<input>', {
+                        type: 'checkbox',
+                        class: 'form-check-input ',
+                        name: 'selectedMenu',
+                        value: res.id,
+                        id: 'checkbox_' + res.id
+                    });
+
+                    if (res.isSelected) {
+                        checkbox.prop('checked', true);
+                    }
+
+                    var label = $('<label>', {
+                        class: 'form-check-label',
+                        for: 'checkbox_' + res.id,
+                        text: res.name
+                    });
+
+                    var div = $('<div>', {
+                        class: 'form-check ms-2 me-2'
+                    });
+
+                    div.append(checkbox, label);
+                    $('#menu').append(div);
+                });
+
+            }
+        });
+
+    });
+
+    // $('.saveRole').click(function () {
+    //     alert($('form.CreateRoleForm').serialize());
+    //     $.ajax({
+    //         method: "Post",
+    //         url: "/Admin/CreateRole",
+    //         data: $('form.EditRolesForm').serialize(),
+    //         success: function (result) {
+    //             window.location.reload();
+    //         }
+    //     });
+    // });
+</script>

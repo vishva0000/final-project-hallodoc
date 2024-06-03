@@ -1,0 +1,130 @@
+﻿@{
+    Layout = "_AdminPhysicianHeader";
+    ViewData["Active"] = "Partners";
+}
+
+<div class="p-3">
+    <div class="mt-3"><p class="fw-bold fs-4">Vendor(s)</p></div>
+    <div class="bg-white shadow rounded mt-2">
+       <div class="d-inline-flex align-items-center  w-100 ">
+            <div class="ps-2">
+                <input id="searchinput" onkeyup="SearchProfession()" class="form-control p-2 mt-3 px-4 mb-3 w-100" type="text" placeholder="Search vendors">
+
+           </div>
+            <div >
+                <div class="input-group  rounded ms-lg-4 me-lg-4 m-3 w-auto" style="border:2px solid #dee2e6; border-radius:5px;">
+
+                    <span class="input-group-text inputIcon "><i class="bi bi-search "></i></span>
+                    <select class="form-select h-100 professionDrop" onchange="selectProfession()" aria-label="Default select example ">
+                        <option selected  value="0">All Professions</option>
+
+                    </select>
+                </div>
+           </div>
+           <div class="flex-grow-1 d-flex justify-content-end pe-2">
+                <a asp-action="AddBusiness" asp-controller="Admin" class="btn btn-outline-info text-decoration-none">+ Add Business</a>
+           </div>
+       </div>
+       <div id="VendorTable">
+
+       </div>
+    </div>
+</div>
+
+
+
+<script>
+    var search = "";
+    var professiontype = "0";
+
+    $(document).ready(function () {
+        
+        $.ajax({
+            method: "GET",
+            url: "/Admin/GetVendorsTable",
+            data: { proId: professiontype, search: search },
+            success: function (result) {
+
+                if (result.includes("table")) {
+                    $("#VendorTable").html(result);                   
+                    
+                } else {
+                    window.location.reload();
+                }
+
+
+            }
+        }); 
+        
+        $.ajax({
+            method: "GET",
+            url: "/Admin/FetchProfessions",
+            success: function (response) {
+
+                response.forEach(function (res) {
+            
+                        $('.professionDrop').append("<option value='" + res.id + "'>" + res.name + "</option>");
+                });
+            }
+        });
+
+        $(document).on('click', ".delete", deleteVendor);
+
+
+    });
+
+
+    function SearchProfession(){
+        search = $('#searchinput').val();
+        $.ajax({
+            method: "GET",
+            url: "/Admin/GetVendorsTable",
+            data: { proId: professiontype, search: search },
+            success: function (result) {
+
+                if (result.includes("table")) {
+                    $("#VendorTable").html(result);
+
+                } else {
+                    window.location.reload();
+                }
+
+
+            }
+        });
+    }
+
+
+    function selectProfession(){
+        professiontype = $('.professionDrop').val();
+        $.ajax({
+            method: "GET",
+            url: "/Admin/GetVendorsTable",
+            data: { proId: professiontype, search: search },
+            success: function (result) {
+
+                if (result.includes("table")) {
+                    $("#VendorTable").html(result);
+
+                } else {
+                    window.location.reload();
+                }
+
+
+            }
+        });
+    }
+
+   function deleteVendor(){
+        var id = $(this).data("id");
+
+        $.ajax({
+            method: "GET",
+            url: "/Admin/DeleteVendor",
+            data: { id: id },
+            success: function (response) {
+                window.location.reload();
+            }
+        });     
+   }
+</script>

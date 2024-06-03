@@ -1,0 +1,256 @@
+﻿@model DataLayer.DTO.BusinessRequestModel
+@{
+    Layout = "_RequestHeader";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+
+<div class="d-flex justify-content-center">
+    <div class="mt-2 shadow p-3 mb-5 bg-white rounded">
+        <div class="d-flex justify-content-end">
+            <button class="back-btn rounded" onclick="back()">&lt Back</button>
+        </div>
+        <form asp-action="BusinessRequest" method="post">
+            <div class="container-fluid">
+                <h4>Business Information</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>
+                            <div class="form-floating mb-3">
+                                <input type="text"
+                                       asp-for="B_Firstname"
+                                       class="form-control"
+                                       id="floatingInput"
+                                       placeholder="name@example.com" />
+                                <label for="floatingInput">Your First Name</label>
+                            </div>
+                            <span asp-validation-for="B_Firstname" class="text-danger"> </span>
+                        </div>
+                    
+                       
+                    </div>
+                    
+                  
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                asp-for="B_Lastname"
+                                   class="form-control"
+                                   id="floatingInput"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Your Last Name</label>
+                        </div>
+                        <span asp-validation-for="B_Lastname" class="text-danger"> </span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <input type="tel"
+                                   asp-for="B_Phone"
+                                   class="form-control"
+                                   id="phone"
+                                   placeholder="(201) 555-0123"
+                                   style="height: 58px; width: 100%" autoInsertDialCode: true,
+                                   nationalMode: false, />
+                            <span asp-validation-for="B_Phone" class="text-danger"> </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating ">
+                            <input type="email"
+                                asp-for="B_Email"
+                                   class="form-control"
+                                   id="floatingInput"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Your Email</label>
+                        </div>
+                        <span asp-validation-for="B_Email" class="text-danger"> </span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                asp-for="B_Hotel"
+                                   class="form-control"
+                                   id="floatingInput"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Business/Property Name</label>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                asp-for="B_caseNo"
+                                   class="form-control"
+                                   id="floatingInput"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Case Number &lpar;Optional&rpar;</label>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Patient Information</h4>
+                <div class="form-floating">
+                    <textarea class="form-control"
+                               asp-for="P_symp"
+                              placeholder="Leave a comment here"
+                              id="floatingTextarea"
+                              style="height: 100px"
+                              rows="5"></textarea>
+                    <label for="floatingTextarea">Enter Brief Details Of Symptoms</label>
+                </div>
+                <span asp-validation-for="P_symp" class="text-danger"> </span>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                   class="form-control"
+                                   asp-for="P_Firstname"
+                                   id="floatingInput"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">First Name</label>
+                        </div>
+                        <span asp-validation-for="P_Firstname" class="text-danger"> </span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                asp-for="P_Lastname"
+                                   class="form-control"
+                                   id="floatingInput"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Last name</label>
+                        </div>
+                        <span asp-validation-for="P_Lastname" class="text-danger"> </span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="date"
+                                asp-for="P_dob"
+                                   class="form-control dob"
+                                   id="floatingInput"
+                                   placeholder=Suchtext autocomplete=off />
+                            <label for="floatingInput">Date of Birth</label>
+                        </div>
+                        <span asp-validation-for="P_dob" class="text-danger"> </span>
+                    </div>
+                </div>
+
+                <h4>Patient Contact Information</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="email"
+                                asp-for="P_Email"
+                                   class="form-control"
+                                   id="floatingInput"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Email</label>
+                        </div>
+                        <span asp-validation-for="P_Email" class="text-danger"> </span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <input type="tel"
+                                   asp-for="P_Phone"
+                                   class="form-control"
+                                   id="phone1"
+                                   placeholder="(201) 555-0123"
+                                   style="height: 58px; width: 100%" autoInsertDialCode: true,
+                                   nationalMode: false, />
+                            <span asp-validation-for="P_Phone" class="text-danger"> </span>
+                        </div>
+                    </div>
+                </div>
+                <h4>Patient Location</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                asp-for="P_Street"
+                                   class="form-control"
+                                   id="floatingInput"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Street</label>
+                        </div>
+                        <span asp-validation-for="P_Street" class="text-danger"> </span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                asp-for="P_City"
+                                   class="form-control"
+                                   id="floatingInput"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">City</label>
+                        </div>
+                        <span asp-validation-for="P_City" class="text-danger"> </span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                asp-for="P_State"
+                                   class="form-control"
+                                   id="floatingInput"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">State</label>
+                        </div>
+                        <span asp-validation-for="P_State" class="text-danger"> </span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                asp-for="P_ZipCode"
+                                   class="form-control"
+                                   id="floatingInput"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Zip Code</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                asp-for="P_Room"
+                                   class="form-control"
+                                   id="floatingInput"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Room # / Suite &lpar;Optional&rpar;</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn submit m-2">Submit</button>
+                    <a asp-controller="Home" asp-action="Index">
+                        <button type="button" class="btn btn-light m-2">Cancle</button>
+
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    var today = new Date();
+    var formattedDate = today.toISOString().split('T')[0];
+
+    document.getElementsByClassName('dob').max = formattedDate;
+
+
+    const phoneInputField = document.querySelector("#phone");
+    const phoneInputField1 = document.querySelector("#phone1");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+        autoInsertDialCode: true,
+        nationalMode: false,
+        utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+    const phoneInput1 = window.intlTelInput(phoneInputField1, {
+        autoInsertDialCode: true,
+        nationalMode: false,
+        utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+</script>

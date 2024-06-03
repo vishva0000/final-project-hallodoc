@@ -1,0 +1,447 @@
+﻿@model List<DataLayer.DTO.AdminDTO.SearchRecordData>
+@{
+    int i = 1;
+}
+
+<div class="d-lg-flex d-none mt-2 table-responsive ">
+    <table class="table ">
+        <thead class="bg-light">
+            <tr>
+                <th>Patient Name</th>
+                <th>Requestor</th>
+                <th>Date Of Service</th>
+                <th>Close Case Date</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Address</th>
+                <th>Zip</th>
+                <th>Request Status</th>
+                <th>Physician</th>
+                <th>Physician Note</th>
+                <th>Cancelled by Provider Note</th>
+                <th>Admin Note</th>
+                <th>Patient Note</th>
+                <th>Delete Permanently</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count != 0)
+            {
+                @foreach (var item in Model)
+                {
+                    <tr class="tableRow">
+                        <td>@item.PatientName</td>
+                        <td>@item.Requestor</td>
+                        <td>
+                            @if (item.DateOfService != null)
+                            {
+                                @item.DateOfService
+                            }
+                            else
+                            {
+                                <span>-</span>
+                            }
+                        </td>
+                        <td>
+                            @if (item.CloseCaseDate != null)
+                            {
+                                @item.CloseCaseDate
+                            }
+                            else
+                            {
+                                <span>-</span>
+                            }
+                        </td>
+                        <td>@item.Email</td>
+                        <td>@item.PhoneNumber</td>
+                        <td>@item.Address</td>
+                        <td>@item.zip</td>
+                        <td>
+                            @if (item.RequestStatus == 1)
+                            {
+                                <span>New</span>
+                            }
+                            else if (item.RequestStatus == 2)
+                            {
+                                <span>Pending</span>
+
+                            }
+                            else if (item.RequestStatus == 4)
+                            {
+                                <span>Active</span>
+
+                            }
+                            else if (item.RequestStatus == 5)
+                            {
+                                <span>Active</span>
+
+                            }
+                            else if (item.RequestStatus == 6)
+                            {
+                                <span>Conclude</span>
+
+                            }
+                            else if (item.RequestStatus == 3)
+                            {
+                                <span>To Close</span>
+
+                            }
+                            else if (item.RequestStatus == 7)
+                            {
+                                <span>To Close</span>
+
+                            }
+                            else if (item.RequestStatus == 8)
+                            {
+                                <span>To Close</span>
+
+                            }
+                            else if (item.RequestStatus == 9)
+                            {
+                                <span>Unpaid</span>
+
+                            }
+                            else if (item.RequestStatus == 10)
+                            {
+                                <span>Closed</span>
+
+                            }
+
+
+                        </td>
+                        <td>
+                            @if (item.Physician != null)
+                            {
+                                @item.Physician
+                            }
+                            else
+                            {
+                                <span>-</span>
+                            }
+                        </td>
+                        <td>
+                            @if (item.PhysicianNote != null)
+                            {
+                                @item.PhysicianNote
+                            }
+                            else
+                            {
+                                <span>-</span>
+                            }
+                        </td>
+                        <td>
+                            @if (item.CancelledNote != null)
+                            {
+                                @item.CancelledNote
+                            }
+                            else
+                            {
+                                <span>-</span>
+                            }
+                        </td>
+
+                        <td>
+                            @if (item.AdminNote != null)
+                            {
+                                @item.AdminNote
+                            }
+                            else
+                            {
+                                <span>-</span>
+                            }
+                        </td>
+                        <td>
+                            @if (item.PatientNote != null)
+                            {
+                                @item.PatientNote
+                            }
+                            else
+                            {
+                                <span>-</span>
+                            }
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-info deletebtn" data-reqid="@item.RequestId">Delete</button>
+                        </td>
+
+                    </tr>
+
+                }
+            }
+            else
+            {
+                <tr>
+                    <td><p>No Data Found</p></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<div class="d-lg-none">
+    <br>
+    @if (Model.Count > 0)
+    {
+        @foreach (var item in Model)
+        {
+            <div class="accordion  " id="accordionExample">
+
+                <div class="accordion-item accordian-back ">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button accordian-back collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#id-@i" aria-expanded="false" aria-controls="collapseTwo">
+                            <p>@item.PatientName</p>
+
+
+
+                        </button>
+                    </h2>
+                    <div id="id-@i" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body pt-0">
+                            <div class="mt-2">
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-solid fa-user text-info"></i>
+                                    </div>
+                                    <p class="mt-1"><span class="text-muted">Requestor:</span> @item.Requestor</p>
+                                </div>
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-regular fa-calendar-days text-info"></i>
+                                    </div>
+                                    <p class="mt-1">
+                                        <span class="text-muted">Date Of Service:</span>@if (item.DateOfService != null)
+                                        {
+                                            @item.DateOfService
+                                        }
+                                        else
+                                        {
+                                            <span>-</span>
+                                        }
+                                    </p>
+                                </div>
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-regular fa-calendar-days text-info"></i>
+
+                                    </div>
+                                    <p class="mt-1">
+                                        <span class="text-muted">Case Close Date:</span>@if (item.CloseCaseDate != null)
+                                        {
+                                            @item.CloseCaseDate
+                                        }
+                                        else
+                                        {
+                                            <span>-</span>
+                                        }
+                                    </p>
+                                </div>
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-regular fa-envelope text-info"></i>
+                                    </div>
+                                    <p class="mt-1"><span class="text-muted">Email:</span> @item.Email</p>
+                                </div>
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-solid fa-phone text-info"></i>
+                                    </div>
+                                    <p class="mt-1"><span class="text-muted">Phone:</span> @item.PhoneNumber</p>
+                                </div>
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-solid fa-location-dot text-info"></i>
+                                    </div>
+                                    <p class="mt-1"><span class="text-muted">Address:</span> @item.Address</p>
+                                </div>
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-solid fa-location-dot text-info"></i>
+                                    </div>
+                                    <p class="mt-1"><span class="text-muted">ZipCode:</span> @item.zip</p>
+                                </div>
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-solid fa-check text-info"></i>
+                                    </div>
+                                    <p class="mt-1">
+                                        <span class="text-muted">Request Status:</span>
+                                        @if (item.RequestStatus == 1)
+                                        {
+                                            <span>New</span>
+                                        }
+                                        else if (item.RequestStatus == 2)
+                                        {
+                                            <span>Pending</span>
+
+                                        }
+                                        else if (item.RequestStatus == 4)
+                                        {
+                                            <span>Active</span>
+
+                                        }
+                                        else if (item.RequestStatus == 5)
+                                        {
+                                            <span>Active</span>
+
+                                        }
+                                        else if (item.RequestStatus == 6)
+                                        {
+                                            <span>Conclude</span>
+
+                                        }
+                                        else if (item.RequestStatus == 3)
+                                        {
+                                            <span>To Close</span>
+
+                                        }
+                                        else if (item.RequestStatus == 7)
+                                        {
+                                            <span>To Close</span>
+
+                                        }
+                                        else if (item.RequestStatus == 8)
+                                        {
+                                            <span>To Close</span>
+
+                                        }
+                                        else if (item.RequestStatus == 9)
+                                        {
+                                            <span>Unpaid</span>
+
+                                        }
+                                        else if (item.RequestStatus == 10)
+                                        {
+                                            <span>Closed</span>
+
+                                        }
+                                    </p>
+                                </div>
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-solid fa-user-doctor text-info"></i>
+                                    </div>
+                                    <p class="mt-1"><span class="text-muted">Provider:</span> @item.Physician</p>
+                                </div>
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-solid fa-book text-info"></i>
+
+                                    </div>
+                                    <p class="mt-1">
+                                        <span class="text-muted">Provider Note:</span>
+                                        @if (item.PhysicianNote != null)
+                                        {
+                                            @item.PhysicianNote
+                                        }
+                                        else
+                                        {
+                                            <span>-</span>
+                                        }
+                                    </p>
+                                </div>
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-solid fa-book text-info"></i>
+                                    </div>
+                                    <p class="mt-1">
+                                        <span class="text-muted">Cancelled By Provider Note:</span>
+                                        @if (item.CancelledNote != null)
+                                        {
+                                            @item.CancelledNote
+                                        }
+                                        else
+                                        {
+                                            <span>-</span>
+                                        }
+                                    </p>
+                                </div>
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-solid fa-book text-info"></i>
+                                    </div>
+                                    <p class="mt-1">
+                                        <span class="text-muted">Admin Note:</span>
+                                        @if (item.AdminNote != null)
+                                        {
+                                            @item.AdminNote
+                                        }
+                                        else
+                                        {
+                                            <span>-</span>
+                                        }
+                                    </p>
+                                </div>
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-solid fa-book text-info"></i>
+                                    </div>
+                                    <p class="mt-1">
+                                        <span class="text-muted">Cancelation reason:</span>
+                                        <span>-</span>
+
+
+                                    </p>
+                                </div>
+                                <div class="d-flex">
+                                    <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                         class="border-info d-flex justify-content-center me-2 align-items-center">
+                                        <i class="fa-solid fa-book text-info"></i>
+                                    </div>
+                                    <p class="mt-1">
+                                        <span class="text-muted">Patient Note:</span>
+                                        @if (item.PatientNote != null)
+                                        {
+                                            @item.PatientNote
+                                        }
+                                        else
+                                        {
+                                            <span>-</span>
+                                        }
+                                    </p>
+                                </div>
+                                <div class="d-flex justify-content-end align-items-center">
+
+                                    <button class="btn btn-outline-info deletebtn" data-reqid="@item.RequestId">Delete</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            i++;
+        }
+    }
+    else
+    {
+        <p>No data found</p>
+    }
+    <br>
+</div>

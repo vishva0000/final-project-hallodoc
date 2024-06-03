@@ -1,0 +1,73 @@
+﻿@{
+    Layout = "_AdminPhysicianHeader";
+    ViewData["Active"] = "ProviderLocation";
+}
+
+<div class="mt-3 container p-2">
+    <div class="d-flex justify-content-center">
+        <div class="d-inline-flex align-items-center w-100">
+            <div>
+                <p class="fw-bold fs-4">Provider Location</p>
+
+            </div>
+            <div class="flex-grow-1 text-end">
+                <button class="  back-btn btn-outline-info back  rounded p-2 "
+                        onclick="back()">
+                    &lt Back
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <div id="map" class="container d-flex align-items-center justify-content-center" style="width: 100vw; height: 800px;"></div>
+
+</div>
+
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyA4mo5tDVFp1fq1aZHh-5cH-9xC6sruw2s" type="text/javascript"></script>
+
+<script>
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 3,
+        center: new google.maps.LatLng(23.034669, 72.500527),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    var tempData = [[]];
+
+    $.ajax({
+        url: '/Admin/getProviderLocationData',
+        type: 'GET',
+        success: function (result) {
+
+           
+            $.each(result, function (index, data) {
+
+                var DataToBeInsert = [];
+                DataToBeInsert.push([data.latitude]);
+                DataToBeInsert.push([data.longitude]);
+                DataToBeInsert.push([data.phyName]);
+                tempData.push(DataToBeInsert);
+
+            });
+
+            for (i = 1; i < tempData.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(tempData[i][0], tempData[i][1]),
+                    map: map
+                });
+
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
+                        infowindow.setContent(tempData[i][2][0]);
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+            }
+        }
+    });
+</script>

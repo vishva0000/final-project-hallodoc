@@ -1,0 +1,281 @@
+﻿
+@{
+    Layout = "_AdminPhysicianHeader";
+    ViewData["Active"] = "Scheduling";
+}
+<link rel="stylesheet" href="/css/Calender.css" />
+
+<div>
+
+    <div class="container mt-3 p-2">
+        <div class="d-inline-flex align-items-center w-100">
+            <p class="fw-bold fs-4">My Schedule</p>
+            <div class="flex-grow-1 d-flex justify-content-end">
+                <button class="  back-btn btn-outline-info back rounded p-2 "
+                        onclick="back()">
+                    &lt Back
+                </button>
+            </div>
+        </div>
+        <div class="calendar-current-date fs-4 fw-bolder">
+        </div>
+        <div class="d-flex justify-content-end ">
+            <div class="d-inline-flex">
+                <div style="background-color:#f8abdae8" class="alert alert-panding mx-1 px-4" role="alert">
+                </div>
+                <span class="m-1">Panding Shifts</span>
+                <div class="alert alert-success mx-1 px-4" role="alert">
+                </div>
+                <span class="m-1">Appoved Shifts</span>
+
+            </div>
+        </div>
+        <div class="d-flex justify-content-between ps-4">
+            <div class="calendar-navigation">
+                <span id="calendar-prev" class="btn btn-info text-white rounded-circle">❮</span>
+                <span class="mx-3"><i class="fa-regular fa-calendar-days"></i></span>
+                <span id="calendar-next" class="btn btn-info text-white rounded-circle">❯</span>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button data-toggle="modal" data-target="#createShiftModal" class="btn btn-success text-white">Add New Shift</button>
+            </div>
+        </div>
+
+        <div id="monthcontainer" class="calendar-body mt-3 calendar-container table-responsive">
+            <table class="calendar-table w-100  ">
+                <thead>
+                    <tr class="calendar-weekdays">
+                        <!-- Weekday headers will be populated dynamically -->
+                    </tr>
+                </thead>
+                <tbody class="calendar-dates">
+                    <!-- Calendar dates will be populated dynamically -->
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+<!-- All shift Modal Modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header viewallhead bg-info text-center text-white">
+                <h1 class="modal-title fs-5" id="model-head"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body viewallbody">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="createShiftModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content border-0">
+            <div class="modal-header bg-info text-white">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add New Shift </h5>
+                <button type="button" class="close btn " data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="bi bi-x-lg text-white"></i></span>
+                </button>
+            </div>
+            <form  class="row p-3 createShiftForm" method="post">
+
+                <div class="form-floating my-3">
+                    <select name="Regionid" class="form-select h-100 input providerStateDrop " id="fregion" aria-label="Default select example assignRegion">
+                        <option value="0" selected>All</option>
+
+                    </select>
+                   
+                </div>
+
+                <div class="col-md-12 form-floating mb-3">
+                    <input id="StartDate" name="Startdate" class="form-control rounded vcs" name="Startdate" type="date" placeholder=Suchtext autocomplete=off>
+                    <label for="floatingInput">Starting Date</label>
+                </div>
+                <div class="col-md-6 form-floating mb-3">
+                    <input id="StartTime" name="Starttime" class="form-control rounded vcs" name="Starttime" type="time" placeholder=Suchtext autocomplete=off>
+                    <label for="floatingInput">Start</label>
+                </div>
+                <div class="col-md-6 form-floating mb-3">
+                    <input id="EndTime" name="Endtime" class="form-control rounded vcs" name="Endtime" type="time" placeholder=Suchtext autocomplete=off>
+                    <label for="floatingInput">End</label>
+                </div>
+                <div class="col-md-6 d-flex align-items-center justify-content-start mb-3">
+                    <label for="floatingInput">Repeat</label>
+                    <label class="switch">
+                        <input type="checkbox" name="Isrepeat" id="Isrepeat" class="switch-input" onchange="toggleCheckboxes()">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <label class="my-2" for="Sunday">Repeat Days</label>
+                <input type="hidden" name="checkWeekday" id="checkWeekday" />
+
+                <div class="col-md-12 row form-floating">
+
+                    <div class="col-md-4">
+                        <div class="form-check mx-2 d-flex align-items-center">
+                            <input onchange="menubox()" class="form-check-input Every disabled" disabled type="checkbox" name="WeekDayForRepeat" value="0">
+                            <label class="form-check-label" for="Sunday">Every Sunday</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 ">
+                        <div class="form-check mx-2 d-flex align-items-center">
+                            <input onchange="menubox()" class="form-check-input Every" disabled type="checkbox" name="WeekDayForRepeat" value="1">
+                            <label class="form-check-label" for="Monday">Every Monday</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-check mx-2 d-flex align-items-center">
+                            <input onchange="menubox()" class="form-check-input Every" disabled type="checkbox" name="WeekDayForRepeat" value="2">
+                            <label class="form-check-label" for="Tuesday">Every Tuesday</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-check mx-2">
+                            <input onchange="menubox()" class="form-check-input Every" disabled type="checkbox" name="WeekDayForRepeat" value="3">
+                            <label class="form-check-label" for="Wednesday">Every Wednesday</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-check mx-2 d-flex align-items-center">
+                            <input onchange="menubox()" class="form-check-input Every" disabled type="checkbox" name="WeekDayForRepeat" value="4">
+                            <label class="form-check-label" for="Thursday">Every Thursday</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-check mx-2 d-flex align-items-center">
+                            <input onchange="menubox()" class="form-check-input Every" disabled type="checkbox" name="WeekDayForRepeat" value="5">
+                            <label class="form-check-label" for="Friday">Every Friday</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3 ">
+                        <div class="form-check mx-2 d-flex align-items-center">
+                            <input onchange="menubox()" class="form-check-input Every" disabled type="checkbox" name="WeekDayForRepeat" value="6">
+                            <label class="form-check-label" for="Saturday">Every Saturday</label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12 form-floating  my-2">
+                    <select name="Repeatupto" class="form-select form-select-sm mt-3 p-2" id="Refile" disabled data-allow-clear="true" tabindex="-1" data-control="select2" data-placeholder=" ">
+                        <option selected hidden>Reapet End</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+                <hr class="form-button-divider" />
+                <input type="hidden" id="checkWeekday" />
+
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-end">
+                        <button type="button" onclick="saveShift()" class="btn btn-info text-white mx-2" >Save</button>
+                        <button type="button" class="btn btn-outline-info hover_white" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/SchedulingForProvider.js" asp-append-version="true"></script>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            method: "GET",
+            url: "/Provider/FetchRegions",
+            success: function (response) {
+                response.forEach(function (res) {
+                    $('.providerStateDrop').append("<option value='" + res.id + "'>" + res.name + "</option>");
+                });
+            }
+        });
+
+    });
+
+    function saveShift() {
+        var valid = false;
+        $.ajax({
+            url: '/Provider/IsShiftValid',
+            method: 'post',
+            data: $('form.createShiftForm').serialize(),
+            success: function (response) {
+                window.location.reload();
+            }
+        });
+
+
+    }
+
+</script>
+
+<script type="text/javascript">
+
+    var today = new Date();
+    var formattedDate = today.toISOString().split('T')[0];
+
+    document.getElementById('StartDate').min = formattedDate;
+    document.getElementById('StartTime').addEventListener('change', function () {
+        var startTime = this.value;
+
+        document.getElementById('EndTime').min = startTime;
+
+        if (document.getElementById('EndTime').value < startTime) {
+            document.getElementById('EndTime').value = startTime;
+        }
+    });
+
+    var startTimeInput = document.getElementById('StartTime');
+    var endTimeInput = document.getElementById('EndTime');
+
+    startTimeInput.addEventListener('input', function () {
+        var startTimeValue = startTimeInput.value;
+        endTimeInput.min = startTimeValue;
+
+        // If the current end time is before the start time, reset the end time value
+        if (endTimeInput.value < startTimeValue) {
+            endTimeInput.value = startTimeValue;
+        }
+    });
+
+
+    window.onload = toggleCheckboxes;
+    function toggleCheckboxes() {
+        var repeatCheckbox = document.getElementById('Isrepeat');
+        var refile = document.getElementById('Refile');
+        var checkboxes = document.querySelectorAll('.Every');
+
+        if (!repeatCheckbox.checked) {
+            checkboxes.forEach(function (checkbox) {
+                checkbox.checked = false;
+                checkbox.disabled = true;
+                refile.disabled = true;
+            });
+        } else {
+            checkboxes.forEach(function (checkbox) {
+                checkbox.disabled = false;
+                refile.disabled = false;
+            });
+        }
+    }
+
+    function menubox() {
+        event.preventDefault();
+        let checkboxes = document.querySelectorAll('.Every:checked');
+        let repeatDays = [];
+        checkboxes.forEach((checkbox) => {
+            repeatDays.push(checkbox.value);
+        });
+        document.querySelector('#checkWeekday').value = repeatDays.join(',');
+    };
+
+</script>

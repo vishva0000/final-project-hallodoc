@@ -1,0 +1,421 @@
+﻿@model DataLayer.DTO.AdminDTO.ViewCaseData
+@inject IHttpContextAccessor Accessor
+
+@{
+    Layout = "_AdminPhysicianHeader";
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+
+
+
+<div style="height: 100%" class="bg-light" onload="edit()">
+
+   
+    <div class="d-flex justify-content-center mt-3">
+        <div class="container">
+
+
+            <div class="d-inline-flex justify-content-between w-100">
+
+
+
+                @if (Model.RequestTypeId == 2)
+                {
+                    <h3 class="m-2 fw-bold"> New Request <span class="badge rounded-pill" style="background-color:#60bc60">Patient</span></h3>
+                }
+                else if (Model.RequestTypeId == 3)
+                {
+                    <h3 class="m-2 font-weight-bold"> New Request <span class="badge rounded-pill" style="background-color:orange">Family/Friend</span></h3>
+
+                }
+                else if (Model.RequestTypeId == 4)
+                {
+                    <h3 class="m-2"> New Request <span class="badge rounded-pill" style="background-color:blue">Concierge</span></h3>
+
+                }
+                else
+                {
+                    <h3 class="m-2"> New Request <span class="badge rounded-pill" style="background-color:pink">Business</span></h3>
+
+                }
+
+
+
+                <div class="ml-auto">
+
+                    <button class="  back-btn btn-outline-info back mt-2 rounded p-2 "
+                            onclick="back()">
+                        &lt Back
+                    </button>
+                </div>
+            </div>
+            <br />
+            <form asp-action="ViewCase" method="post" asp-controller="Admin" asp-route-reqId="@Model.RequestId">
+
+                <div class="bg-white rounded-2 row mt-3 rounded shadow">
+                    <h4 class="m-2 p-2">Patient Information</h4>
+                    <br />
+                    <span>Confirmation Number</span>
+                    <p class="text-info">MD1111111</p>
+                    <div class="col-md-12 pb-4">
+                        <div class="form-floating">
+
+                            <textarea class="form-control input-for-form"
+                                      asp-for="Symp"
+                                      placeholder="Leave a comment here"
+                                      id="floatingTextarea"
+                                      style="height: 100px" disabled></textarea>
+                            <label for="floatingTextarea">Enter Brief Details Of Symptoms</label>
+                        </div>
+
+                    </div>
+                    <br />
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                   class="form-control input-for-form"
+                                   id="floatingInput"
+                                   asp-for="Firstname"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">First Name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                   asp-for="Lastname"
+                                   class="form-control input-for-form"
+                                   id="floatingInput"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="date"
+                                  
+                                   asp-for="Dob"
+                                   class="form-control input-for-form"
+                                   id="floatingInput"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Date of Birth</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                   asp-for="Phone"
+                                   class="form-control input-for-form"
+                                   id="floatingInput"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Phone number</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-10 col-9">
+                        
+
+                        <div class="form-floating mb-3">
+                            <input type="email"
+                                   asp-for="Email"
+                                   class="form-control input-for-form"
+                                   id="floatingInput"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Email</label>
+                        </div>
+
+                    </div>
+                    <div class="col-md-1 col-sm-2 col-3">
+                        <button type="button" class="btn ml-auto btn-outline-info btn-edit p-3">Edit</button>
+                        <button type="submit" class="btn m-lg-auto btn-info btn-save p-3">Save</button>
+                    </div>
+                    <h4 class="m-2 p-2">Location Information</h4>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                   asp-for="Street"
+                                   class="form-control input-for-form"
+                                   id="floatingInput"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Region</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 col-sm-10 col-9 ">
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                   asp-for="State"
+                                   class="form-control input-for-form"
+                                   id="floatingInput"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Business Address</label>
+                        </div>
+                    </div>
+                    <div class="col-md-1 col-sm-2 col-3">
+                        <button class="btn btn-outline-info p-3" type="button">
+                            <i class="bi bi-geo-alt "></i>
+                        </button>
+                      
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text"
+                                   asp-for="Room"
+                                   class="form-control input-for-form"
+                                   id="floatingInput"
+                                   placeholder="name@example.com" />
+                            <label for="floatingInput">Room</label>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end mb-2">
+                        <div class="m-2">
+                            
+            @if (Accessor.HttpContext.Request.Cookies["Role"] == "admin")
+                            {
+                                @if (Model.status == 1)
+                                {
+                                    <button type="button" data-toggle="modal" id="assigncasebtn" data-target="#model2" data-assreqid="@Model.RequestId" class="btn ml-auto btn-info text-white assign-case">Assign</button>
+
+                                }
+                                <a asp-controller="Admin" class="btn ml-auto btn-info text-white " asp-route-Requestid="@Model.RequestId" asp-action="ViewNotes">
+                                    View Notes
+                                </a>
+                                @if (Model.status == 1)
+                                {
+                                    <button type="button" data-toggle="modal" data-target="#model1" data-name="@Model.Firstname" data-id="@Model.RequestId" class="btn ml-auto btn-danger cancel-case">Cancle</button>
+
+                                }
+                            } 
+                            
+                            @if (Accessor.HttpContext.Request.Cookies["Role"] == "provider")
+                            {
+                               
+                                <a asp-controller="Admin" class="btn ml-auto btn-info text-white " asp-route-Requestid="@Model.RequestId" asp-action="ViewNotes">
+                                    View Notes
+                                </a>
+                              
+                            }
+
+                          
+                           
+                        </div>
+                    </div>
+                </div>               
+            </form>
+            <br/>
+        </div>
+    </div>
+    <!-- Cancel case  Modal -->
+    <div class="modal fade" id="model1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div style="background-color:#0dcaf0; color:white;" class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Confirm Cancellation</h5>
+                    <button type="button" class="close btn btn-lg text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form class="cancelcaseform">
+                    <div class="modal-body">
+                        <input type="number"
+                               hidden
+                               name="req_id"
+                               id="reqestid" />
+                        <p>Patient Name : <span id="Name" class="text-info"></span></p>
+                        <div class="dropdown bg-light">
+
+                            <select class="form-select" aria-label="Default select example" required>
+                                <option selected>Reason for cancellation</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <br />
+                        <div class="form-floating">
+                            <textarea class="form-control"
+                                      placeholder="Leave a comment here"
+                                      id="floatingTextarea"
+                                      name="cancelNote"
+                                      style="height: 100px" required></textarea>
+                            <label for="floatingTextarea">Provide Aditional notes</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+
+                        <button id="cancelcasesubmit"  type="submit" class="btn btn-info text-white">Confirm</button>
+                        <button  type="button" class="btn btn-outline-info " data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Assign case  Modal -->
+    <div class="modal fade" id="model2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div style="background-color:#0dcaf0; color:white;" class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Assign Request</h5>
+                    <button type="button" class="close btn btn-lg text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form class="assigncaseform">
+                    <div class="modal-body">
+                        <p style="font-size: 15px">To assign this request, search and select another Physician.</p>
+                        <input type="number"
+                               hidden
+                               name="assign_req_id"
+                               id="assignreqid" />
+                        <div class="dropdown bg-light">
+
+                            <select class="form-select regionDropDown" name="phy_region" aria-label="Default select example" required>
+                                <option>Narrow Search by Region</option>
+
+                            </select>
+                        </div>
+                        <br />
+                        <div class="dropdown bg-light">
+
+                            <select class="form-select physicianselect" name="phy_id" aria-label="Default select example" required>
+
+                                <option selected>Select Physician</option>
+
+                            </select>
+                        </div>
+                        <br />
+                        <div class="form-floating">
+                            <textarea class="form-control"
+                                      placeholder="Leave a comment here"
+                                      id="floatingTextarea"
+                                      name="assignNote"
+                                      style="height: 100px" required></textarea>
+                            <label for="floatingTextarea">Description</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button id="assigncasesubmit" type="submit" class="btn btn-info text-white">Submit</button>
+                        <button  type="button" class="btn btn-outline-info" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $(document).on("click", ".assign-case", OpenAssigncase);
+            $(document).on("click", ".cancel-case", OpenCancelcase);
+
+           
+            // Disable all input fields initially
+            $('.input-for-form, .select,.btn-map').prop('disabled', true);
+            $('#floatingTextarea').prop('disabled', true);
+            $('.btn-save').hide();
+
+            // Handle click event for the Edit button
+            $('.btn-edit').click(function () {
+                // Enable all input fields
+                $('.input-for-form, .select,.btn-map').prop('disabled', false);
+                $('#floatingTextarea').prop('disabled', false);
+
+                $('.btn-save').show();
+                $('.btn-edit').hide();
+            });
+
+
+            $.ajax({
+                url: '/Admin/FetchRegions',
+                method: 'GET',
+                success: function (response) {
+                    response.forEach(function (res) {
+                        $('.regionDropDown').append("<option value='" + res.regionid + "'>" + res.name + "</option>");
+                    });
+                }
+            });
+        });
+
+        function OpenAssigncase() {
+            var requestid = $(this).data("assreqid");
+            $('#assignreqid').val(requestid);
+        }
+
+        function OpenCancelcase() {
+            // var name = $(this).closest('tr').find('td').first().text();
+            var reqid = $(this).data("id");
+            var name = $(this).data("name");
+            $('#Name').html(name);
+            $('#reqestid').val(reqid);
+            $('model1').modal();
+        }
+
+        $('.regionDropDown').change(function () {
+            var selectregionid = $(this).val();
+            var physicianselect = $(".physicianselect");
+            physicianselect.empty().append("<option> Select a physician </option>");
+            if (selectregionid) {
+                $.ajax({
+                    url: '/Admin/FetchPhysician?selectregionid=' + selectregionid,
+                    method: 'GET',
+                    success: function (response) {
+
+                        response.forEach(function (res) {
+                            $('.physicianselect').append("<option value='" + res.physicianid + "'>" + res.name + "</option>");
+                        });
+                    }
+                });
+            }
+
+        });
+
+        $('#assigncasesubmit').on('click', function () {
+
+            $.ajax({
+                method: "POST",
+                url: '@Url.Action("AssignCase", "Admin")',
+                data: $('form.assigncaseform').serialize(),
+                success: function (result) {
+                    window.location.reload();
+                }
+
+            });
+        });
+
+        $('#cancelcasesubmit').on('click', function () {
+
+            $.ajax({
+                method: "POST",
+                url: '@Url.Action("CancelCase", "Admin")',
+                data: $('form.cancelcaseform').serialize(),
+                success: function (result) {
+                    window.location.reload();
+
+                }
+
+            });
+        }); 
+
+    </script>
+
+}
+<script>
+
+
+    const phoneInputField = document.querySelector("#phone");
+    const phoneInputField1 = document.querySelector("#phone1");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+        utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+    const phoneInput1 = window.intlTelInput(phoneInputField1, {
+        utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+</script>

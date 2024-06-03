@@ -1,0 +1,176 @@
+﻿@model DataLayer.DTO.ProviderDTO.ConcludeCareData
+@{
+    Layout = "_AdminPhysicianHeader";
+    ViewData["Active"] = "Dashboard";
+}
+
+
+<div>
+  
+
+    <div class=" container mt-5">
+        <div class="d-flex align-items-center w-100">
+            <p class="fs-4 fw-bold"> Conclude Care</p>
+            <div class="flex-grow-1 d-flex justify-content-end">
+                <button class="back-btn btn btn-outline-info " onclick="back()">&lt Back</button>
+
+            </div>
+
+        </div>
+        <div class="bg-white rounded shadow p-3">
+            <p class="text-muted mt-2 ">Patient Name</p>
+            <p class="ps-2 text-info">@Model.name</p>
+
+            <form asp-action="FileUploadConclude" asp-controller="Provider" method="post" enctype="multipart/form-data">
+
+                <div class="d-flex w-100 align-items-center">
+                    <p class="fw-bold fs-4 ">Encounter Forms</p>
+                    <div class="flex-grow-1 d-flex justify-content-end">
+
+                        <button type="button" onclick="document.getElementById('fileInput').click()" class="btn btn-info text-white">
+                            <img src="./Images/cloud-upload-icon.svg" alt="" />
+                            Upload
+                        </button>
+                        <input type="file" style="display: none" name="ConcludeFiles" id="fileInput" multiple />
+                        <button type="submit" class="btn btn-outline-info ms-2" id="submitButton" style="display: none;">Submit</button>
+                        <input name="concludeid" value="@Model.requestid" hidden />
+                    </div>
+                </div>
+                <div id="fileNames"></div>
+            </form>
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr class="bg-light">
+                            <th>Documents</th>
+                            <th>Actions</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        @if (Model.files.Count != 0)
+                        {
+                            @foreach (var items in Model.files)
+                            {
+                                <tr>
+                                    <td>@items.filename</td>
+                                    <td><a href="/uploads/@items.filename" download="@items.filename"><i class="bi bi-cloud-download border border-info p-1 rounded text-info"></i></a></td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td><p>No data found</p></td>
+                                <td></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div>
+            
+                    <p class="fw-bold fs-4">Provider Notes</p>
+                    <div class="form-floating">
+                        <textarea class="form-control"
+                                  placeholder="Leave a comment here"
+                                  id="note"
+                                  style="height: 100px"></textarea>
+                        <label for="floatingTextarea">Provider Notes</label>
+                    </div>
+             
+            </div>
+            <div class="d-flex justify-content-end mt-2">
+                <button class="btn btn-info text-white" type="button" onclick="ConcludeCare(@Model.requestid)">Conclude Care</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- First Finalize encounter Modal -->
+
+
+<div class="modal fade" id="FirstFinalize" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+      
+                <div class="modal-body">
+                    <br />
+                   
+                    <div class="d-flex flex-column align-items-center justify-content-center">
+                        <div class="warning_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="85" height="85" fill="currentColor" class="bi bi-exclamation-circle-fill war-i" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4m.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2" />
+                            </svg>
+                        </div>
+                        <br />
+                    <h4 class="my-3"> Please finalize encounter form first</h4>
+                       
+                    </div>
+                    <br />
+                   <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-outline-info m-2" data-dismiss="modal">OK</button>
+
+                   </div>
+
+                    <br />
+                </div>
+         
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("fileInput").addEventListener("change", function () {
+        var files = this.files;
+        var fileNames = "";
+        for (var i = 0; i < files.length; i++) {
+            fileNames += files[i].name + "<br>";
+        }
+        document.getElementById("fileNames").innerHTML = fileNames;
+        document.getElementById("submitButton").style.display = "block";
+    });
+
+    document.getElementById("uploadForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent form submission
+
+    });
+
+    function ConcludeCare(reqid) {
+  
+        var myModal = new bootstrap.Modal(document.getElementById('FirstFinalize'), {})
+
+        $.ajax({
+            method: "POST",
+            url: '@Url.Action("IsEncounterFinalized", "Provider")',
+            data: { reqid: reqid },
+            success: function (result) {
+
+                if (result) {
+                    concludethereq(reqid)
+                } else {
+                   
+                    myModal.show()
+                   
+
+                }
+            }
+
+        });
+    }
+    function concludethereq(reqid) {
+        var note = $('#note').val();
+        $.ajax({
+            method: "POST",
+            url: '@Url.Action("ConcludeRequest", "Provider")',
+            data: { reqid: reqid , note: note},
+            success: function (result) {
+
+                window.location.href = "/Provider/ProviderDashboard"
+            }
+
+        });
+
+    }
+</script>

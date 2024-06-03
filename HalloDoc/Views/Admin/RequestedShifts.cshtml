@@ -1,0 +1,313 @@
+﻿@{
+    Layout = "_AdminPhysicianHeader";
+}
+
+<div>
+    
+    <div class="d-flex justify-content-center mt-3">
+        <div class="container mt-3">
+            <div class="d-inline-flex justify-content-between w-100">
+
+                <h3 class="fw-bold">Requested Shifts</h3>
+
+                <div class="ml-auto">
+
+                    <button class="  back-btn btn-outline-info back mt-2 rounded p-2 "
+                            onclick="back()">
+                        &lt Back
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-3 bg-white rounded shadow p-3 ">
+                <div class="row align-items-center ">
+                    <div class=" col-lg-3 col-12">
+                        <div>
+                            <select class="form-select h-100 regionDrop " aria-label="Default select example assignRegion">
+                                <option value="0" selected>All Regions</option>
+
+                            </select>
+                        </div>
+
+                    </div>
+
+
+                    <div class=" col-lg-9 col-12   ">
+                        <div class="row d-flex justify-content-end">
+
+                            <button class="btn btn-success text-white col-12 col-lg-3 currMonthShift m-2 ">View Current Month Shifts</button>
+                            <button class="btn btn-success text-white col-12 col-lg-3 allMonthShifts m-2 " style="display:none">View All Shifts</button>
+                            <button class="btn btn-success text-white  col-12 col-lg-3  m-2 " onclick="approveSelectedShift()">Approve Selected</button>
+                            <button class="btn btn-danger text-white col-12 col-lg-3 m-2" onclick="deleteSelectedShift()">Delete Selected</button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="shiftTable">
+                </div>
+
+                <div id="pagination" class="d-flex flex-row-reverse p-3">
+                    <div class="d-flex">
+                        <button class=" btn btn-light prev-button" disabled><i class="fa-solid fa-arrow-rotate-left"></i> </button>
+                        <!-- Pagination buttons container -->
+                        <div class="page-buttons"></div>
+                        <button class="btn  btn-light  next-button"> <i class="fa-solid fa-arrow-rotate-right"></i> </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var str = "0";
+    var month = false;
+    let selectedShift = [];
+    let mobileshifts = [];
+    function approveSelectedShift() {
+        $('input.deskselect[type="checkbox"]:checked').each(function () {
+            selectedShift.push($(this).val());
+        });
+
+        $('input.mobselect[type="checkbox"]:checked').each(function () {
+            mobileshifts.push($(this).val());
+        });
+
+        if (window.innerWidth >= 992) {
+            $.ajax({
+                method: "POST",
+                url: "/Admin/ApproveShifts",
+                data: { shifts: selectedShift },
+                success: function (result) {
+
+                    alert("Shifts Approved ");
+                    window.location.reload();
+                }
+            });
+        } else {
+            $.ajax({
+                method: "POST",
+                url: "/Admin/ApproveShifts",
+                data: { shifts: mobileshifts },
+                success: function (result) {
+
+                    alert("Shifts from mobile Approved ");
+                    window.location.reload();
+                }
+            });
+        }
+
+    }
+
+    function deleteSelectedShift() {
+        $('input[type="checkbox"]:checked').each(function () {
+            selectedShift.push($(this).val());
+        });
+
+        $('input.mobselect[type="checkbox"]:checked').each(function () {
+            mobileshifts.push($(this).val());
+        });
+
+        if (window.innerWidth >= 992) {
+            $.ajax({
+                method: "POST",
+                url: "/Admin/DeleteShifts",
+                data: { shifts: selectedShift },
+                success: function (result) {
+
+                    alert("Shifts deleted ");
+                    window.location.reload();
+
+                }
+            });
+        } else {
+            $.ajax({
+                method: "POST",
+                url: "/Admin/DeleteShifts",
+                data: { shifts: mobileshifts },
+                success: function (result) {
+
+                    alert("Shifts deleted ");
+                    window.location.reload();
+
+                }
+            });
+        }
+
+    }
+
+    $(document).ready(function () {
+        $.ajax({
+            method: "GET",
+            url: "/Admin/GetShiftTable",
+            data: { search: str, month: month },
+            success: function (result) {
+
+                if (result.includes("table")) {
+                    $(".shiftTable").html(result);
+                    setupPagination(5, ".shiftRow");
+
+                } else {
+                    window.location.reload();
+                }
+
+            }
+        });
+
+        $.ajax({
+            method: "GET",
+            url: "/Admin/FetchRegions",
+            data: { search: str },
+            success: function (response) {
+                response.forEach(function (res) {
+                    $('.regionDrop').append("<option value='" + res.regionid + "'>" + res.name + "</option>");
+                });
+            }
+        });
+
+
+    });
+
+    $('.regionDrop').change(function () {
+        str = $('.regionDrop').val();
+        $.ajax({
+            method: "GET",
+            url: "/Admin/GetShiftTable",
+            data: { search: str, month: month },
+            success: function (result) {
+
+                if (result.includes("table")) {
+                    $(".shiftTable").html(result);
+                    setupPagination(5, ".shiftRow");
+
+
+                } else {
+                    window.location.reload();
+                }
+
+            }
+        });
+    });
+
+    $('.currMonthShift').click(function () {
+        str = $('.regionDrop').val();
+        $('.allMonthShifts').show();
+        $('.currMonthShift').hide();
+
+        month = true;
+        $.ajax({
+            method: "GET",
+            url: "/Admin/GetShiftTable",
+            data: { search: str, month: month },
+            success: function (result) {
+
+                if (result.includes("table")) {
+                    $(".shiftTable").html(result);
+                    setupPagination(5, ".shiftRow");
+
+                } else {
+                    window.location.reload();
+                }
+
+            }
+        });
+    });
+
+    $('.allMonthShifts').click(function () {
+        str = $('.regionDrop').val();
+        $('.allMonthShifts').hide();
+        $('.currMonthShift').show();
+
+        month = false;
+        $.ajax({
+            method: "GET",
+            url: "/Admin/GetShiftTable",
+            data: { search: str, month: month },
+            success: function (result) {
+
+                if (result.includes("table")) {
+                    $(".shiftTable").html(result);
+                    setupPagination(5, ".shiftRow");
+
+
+                } else {
+                    window.location.reload();
+                }
+
+            }
+        });
+    });
+
+
+    function setupPagination(items, classname) {
+        const itemsPerPage = items;
+        let currentPage = 1;
+        let totalPages = Math.ceil($(classname).length / itemsPerPage);
+
+        const maxPageButtons = 3;
+        let startPage = 1;
+
+        function showRowsForPage(page) {
+
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+
+            $(classname).hide();
+            $(classname).slice(startIndex, endIndex).show();
+
+        }
+
+        function generatePaginationButtons() {
+            $('.page-buttons').empty();
+            let endPage = Math.min(totalPages, startPage + maxPageButtons - 1);
+            for (let i = startPage; i <= endPage; i++) {
+                const buttonClass = (i === currentPage) ? 'page-button btn btn-outline-info ms-2 current-page' : 'page-button btn-outline-info ms-2  btn ';
+                $('.page-buttons').append(`<button class="${buttonClass}" data-page="${i}">${i}</button>`);
+            }
+        }
+        function navigateToPage(page) {
+            currentPage = page;
+            startPage = Math.max(currentPage - Math.floor(maxPageButtons / 2), 1);
+            showRowsForPage(currentPage);
+            generatePaginationButtons();
+            updateButtonStates();
+        }
+
+        $('.next-button').on('click', function () {
+            if (currentPage < totalPages) {
+                navigateToPage(currentPage + 1);
+            }
+        });
+
+        $('.prev-button').on('click', function () {
+            if (currentPage > 1) {
+                navigateToPage(currentPage - 1);
+            }
+        });
+
+        $('.first-button').on('click', function () {
+            navigateToPage(1);
+        });
+
+        $('.last-button').on('click', function () {
+            navigateToPage(totalPages);
+        });
+
+        $(document).on('click', '.page-button', function () {
+            const page = $(this).data('page');
+            navigateToPage(page);
+        });
+
+        function updateButtonStates() {
+            $('.prev-button').prop('disabled', currentPage === 1);
+            $('.next-button').prop('disabled', currentPage === totalPages);
+        }
+
+        // Initialize page with first set of rows and pagination buttons
+        showRowsForPage(currentPage);
+        generatePaginationButtons();
+        updateButtonStates();
+    }
+</script>

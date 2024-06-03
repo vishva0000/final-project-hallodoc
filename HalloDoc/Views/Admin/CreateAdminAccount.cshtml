@@ -1,0 +1,235 @@
+﻿@model DataLayer.DTO.AdminDTO.AdminAccountData
+@{
+    Layout = "_AdminPhysicianHeader";
+}
+<div>
+
+
+    <div class="d-flex justify-content-center mt-3">
+        <div class="container">
+
+            <div class="d-inline-flex justify-content-between w-100">
+
+                <h3 class="m-2 fw-bold">Create Admin Account</h3>
+                <div class="ml-auto">
+
+
+                    <button class="  back-btn btn-outline-info back mt-2 rounded p-2 "
+                            onclick="back()">
+                        &lt Back
+                    </button>
+                </div>
+            </div>
+            <br />
+
+
+
+            <div class="bg-white rounded shadow">
+                <form asp-action="CreateAdminAccount" asp-controller="Admin" method="post" enctype="multipart/form-data">
+                    <div class="row mt-2 p-3">
+                        <p class="fw-bold">Account Information</p>
+                        <div class="col-md-4">
+                            <div class="form-floating mb-3">
+                                <input type="text"
+                                       class="form-control "
+                                       asp-for="Username"
+                                       id="contact"
+                                       placeholder="name@example.com" />
+                                <label for="floatingInput">User Name</label>
+                            </div>
+                            <span class="text-danger" asp-validation-for="Username"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating mb-3">
+                                <input type="text"
+                                       class="form-control "
+                                       asp-for="Password"
+                                       id="contact"
+                                       placeholder="name@example.com" />
+                                <label for="floatingInput">Password</label>
+                            </div>
+                            <span class="text-danger" asp-validation-for="Password"></span>
+                        </div>
+
+                        <div class="col-md-4">
+                            <select asp-for="Roleid" style="height:55px;" class="form-select acc-input" aria-label="Default select example">
+                                <option value="0">Select Role</option>
+                                @foreach (var obj in Model.RolesList)
+                                {
+                                    <option value="@obj.Roleid">@obj.Rolename</option>
+                                }
+                            </select>
+                        </div>
+                        <p class="fw-bold">Administrator Information</p>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text"
+                                       asp-for="Firstname"
+                                       class="form-control input info-input"
+                                       id="contact"
+                                       placeholder="name@example.com" />
+                                <label for="floatingInput">First Name</label>
+                            </div>
+                            <span class="text-danger" asp-validation-for="Firstname"></span>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text"
+                                       asp-for="Lastname"
+                                       class="form-control input info-input"
+                                       id="contact"
+                                       placeholder="name@example.com" />
+                                <label for="floatingInput">Last Name</label>
+                            </div>
+                            <span class="text-danger" asp-validation-for="Lastname"></span>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text"
+                                       asp-for="Email"
+                                       class="form-control input info-input"
+                                       id="contact"
+                                       placeholder="name@example.com" />
+                                <label for="floatingInput">Email</label>
+                            </div>
+                            <span class="text-danger" asp-validation-for="Email"></span>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text"
+                                       asp-for="ConfirmEmail"
+                                       class="form-control input info-input"
+                                       id="contact"
+                                       placeholder="name@example.com" />
+                                <label for="floatingInput">Confirm Email</label>
+                            </div>
+                            <span class="text-danger" asp-validation-for="ConfirmEmail"></span>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text"
+                                       asp-for="Phone"
+                                       class="form-control input info-input"
+                                       id="phone"
+                                       style="height: 58px; width: 100%"
+                                       placeholder="Phone number" />
+                            </div>
+                            <span class="text-danger" asp-validation-for="Phone"></span>
+
+                        </div>
+
+
+
+
+                        <div class="col-md-12">
+                            @foreach (var item in Model.ProviderServiceRegion)
+                            {
+                                <input name="Selectedregions" id="@item.Name" value="@item.RegionId" class="form-check-input input info-input ms-2" type="checkbox">
+                                <label class="form-check-label ms-2" for="@item.Name">
+                                    @item.Name
+                                </label>
+                            }
+                        </div>
+                        <span class="text-danger" asp-validation-for="Selectedregions"></span>
+
+                        <br />
+                        <p class="fw-bold mt-3">Mailing & Billing Information</p>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text"
+                                       asp-for="Address1"
+                                       class="form-control input  mail-input"
+                                       id="email"
+                                       placeholder="name@example.com" />
+                                <label for="floatingInput">Address 1</label>
+                            </div>
+                            <span class="text-danger" asp-validation-for="Address1"></span>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text"
+                                       asp-for="Address2"
+                                       class="form-control input mail-input"
+                                       id="email"
+                                       placeholder="name@example.com" />
+                                <label for="floatingInput">Address 2</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text"
+                                       asp-for="City"
+                                       class="form-control input mail-input"
+                                       id="email"
+                                       placeholder="name@example.com" />
+                                <label for="floatingInput">City</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <select asp-for="StateId" style="height:55px;" class="form-select mail-input" aria-label="Default select example">
+                                <option value="0">Select state</option>
+                                @foreach (var obj in Model.stateList)
+                                {
+                                    <option value="@obj.regid">@obj.stateName</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text"
+                                       asp-for="Zip"
+                                       class="form-control input mail-input"
+                                       id="email"
+                                       placeholder="name@example.com" />
+                                <label for="floatingInput">Zip</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text"
+                                       asp-for="AltPhone"
+                                       class="form-control input mail-input "
+                                       id="phone1"
+                                       style="height: 58px; width: 100%"
+                                       placeholder="Phone number" />
+                                
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="col-md-12">
+                            <div class="text-end"><button class="btn btn-success text-white" type="submit">Create Account</button></div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    const phoneInputField = document.querySelector("#phone");
+    const phoneInputField1 = document.querySelector("#phone1");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+        autoInsertDialCode: true,
+        nationalMode: false,
+        utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+    const phoneInput1 = window.intlTelInput(phoneInputField1, {
+        autoInsertDialCode: true,
+        nationalMode: false,
+        utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+</script>

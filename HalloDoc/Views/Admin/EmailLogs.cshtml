@@ -1,0 +1,203 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_AdminPhysicianHeader";
+    ViewData["Active"] = "Records";
+    ViewData["SubMenu"] = "Email";
+}
+
+<div>
+   
+    <div class="container-fluid mt-4">
+        <div class="d-inline-flex align-items-center w-100">
+            <div>
+                <p class="fw-bold fs-4">Email Logs</p>
+            </div>
+            <div class="flex-grow-1 d-flex justify-content-end">
+                <button class="  back-btn btn-outline-info back  rounded p-2 "
+                        onclick="back()">
+                    &lt Back
+                </button>
+            </div>
+
+        </div>
+
+        <div class="bg-white mt-3 shadow rounded">
+            <form class="emailLogSearch">
+                <div class="row justify-content-between align-items-center">
+                        
+                <div class="col-xxl-10 row">
+                    <div class="col">
+                        <div class="input-group  rounded me-xl-4 m-3" style="border:2px solid #dee2e6; border-radius:5px;">
+
+                            <span class="input-group-text inputIcon"><i class="bi bi-search "></i></span>
+                            <select class="form-select roledrop" aria-label="Default select example" name="Role" style="border:none;">
+                                <option value=0 selected>All</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xxl">
+                        <div class="ms-xl-2">
+                            <input class="form-control p-2 mt-3 mb-3 m-3" type="text" name="ReceiverName" placeholder="Receiver Name" id="receiverName" />
+                        </div>
+                    </div>
+                    <div class="col-xxl">
+                        <div class="ms-xl-2">
+                            <input class="form-control p-2 mt-3  mb-3 m-3" type="text" name="Email" placeholder="Email Id" id="receiverEmail" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="ms-xl-2">
+                            <input class="form-control p-2 mt-3  mb-3 m-3" type="date" name="CreatedDate" id="createdDate" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="ms-xl-2">
+                                <input class="form-control p-2 mt-3  mb-3 m-3" type="date" name="SentDate" id="sentDate" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-2 align-self-center">
+                    <div class="float-lg-end text-center me-lg-4 mb-2 mb-xl-0">
+                            <button class="btn btn-info text-white createProvider" type="button" onclick="search()">Search</button>
+                        <button class="btn btn-outline-info  " type="reset">Clear</button>
+                    </div>
+                </div>
+              
+            </div>
+            </form>
+            <div id="EmailTable">
+            </div>
+
+            <div id="pagination" class="d-flex flex-row-reverse p-3">
+                <div class="d-flex">
+                    <button class="btn btn-info text-white pagination_btn first-button">First</button>
+                    <button class=" btn btn-light prev-button" disabled><i class="fa-solid fa-arrow-rotate-left"></i> </button>
+                    <!-- Pagination buttons container -->
+                    <div class="page-buttons"></div>
+                    <button class="btn  btn-light  next-button"> <i class="fa-solid fa-arrow-rotate-right"></i> </button>
+                    <button class=" btn btn-info text-white pagination_btn last-button">Last</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                method: "GET",
+                url: "/Admin/GetAllEmails",
+                success: function (result) {
+                    if (result.includes("table")) {
+                        $("#EmailTable").html(result);
+                        setupPagination(5, ".tableRow")
+
+                    } else {
+                        window.location.reload();
+                    }
+
+                }
+            });
+            
+            $.ajax({
+                method: "GET",
+                url: "/Admin/FetchRoles",
+                success: function (response) {
+                    response.forEach(function (res) {
+                        $('.roledrop').append("<option value='" + res.id + "'>" + res.name + "</option>");
+                    });
+                }
+            });
+        });
+
+        function search() {
+            $.ajax({
+                method: "POST",
+                url: "/Admin/EmailBySearch",
+                data: $('form.emailLogSearch').serialize(),
+                success: function (result) {
+                    if (result.includes("table")) {
+                        $("#EmailTable").html(result);
+                        setupPagination(5, ".tableRow")
+
+                    } else {
+                        window.location.reload();
+                    }
+                }
+
+            });
+        }
+
+        function setupPagination(items, classname) {
+            const itemsPerPage = items;
+            let currentPage = 1;
+            let totalPages = Math.ceil($(classname).length / itemsPerPage);
+
+            const maxPageButtons = 3;
+            let startPage = 1;
+
+            function showRowsForPage(page) {
+
+                const startIndex = (page - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+
+                $(classname).hide();
+
+                $(classname).slice(startIndex, endIndex).show();
+            }
+
+            function generatePaginationButtons() {
+                $('.page-buttons').empty();
+                let endPage = Math.min(totalPages, startPage + maxPageButtons - 1);
+                for (let i = startPage; i <= endPage; i++) {
+                    const buttonClass = (i === currentPage) ? 'page-button btn btn-outline-info ms-2 current-page' : 'page-button btn-outline-info ms-2  btn ';
+                    $('.page-buttons').append(`<button class="${buttonClass}" data-page="${i}">${i}</button>`);
+                }
+            }
+            function navigateToPage(page) {
+                currentPage = page;
+                startPage = Math.max(currentPage - Math.floor(maxPageButtons / 2), 1);
+                showRowsForPage(currentPage);
+                generatePaginationButtons();
+                updateButtonStates();
+            }
+
+            $('.next-button').on('click', function () {
+                if (currentPage < totalPages) {
+                    navigateToPage(currentPage + 1);
+                }
+            });
+
+            $('.prev-button').on('click', function () {
+                if (currentPage > 1) {
+                    navigateToPage(currentPage - 1);
+                }
+            });
+
+            $('.first-button').on('click', function () {
+                navigateToPage(1);
+            });
+
+            $('.last-button').on('click', function () {
+                navigateToPage(totalPages);
+            });
+
+            $(document).on('click', '.page-button', function () {
+                const page = $(this).data('page');
+                navigateToPage(page);
+            });
+
+            function updateButtonStates() {
+                $('.prev-button').prop('disabled', currentPage === 1);
+                $('.next-button').prop('disabled', currentPage === totalPages);
+            }
+
+            // Initialize page with first set of rows and pagination buttons
+            showRowsForPage(currentPage);
+            generatePaginationButtons();
+            updateButtonStates();
+        }
+
+    </script>

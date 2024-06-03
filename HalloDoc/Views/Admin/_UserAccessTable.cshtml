@@ -1,0 +1,38 @@
+﻿@model List<DataLayer.DTO.AdminDTO.UserAccessData>
+
+<div >
+    <table class="w-100">
+        <thead class="bg-light">
+            <tr>
+                <th class="p-2">AccountType</th>
+                <th class="p-2">Account POC</th>
+                <th class="p-2">Phone</th>
+                <th class="p-2">Status</th>
+                <th class="p-2">Open Requests</th>
+                <th class="p-2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr class="ps-2">
+                    <td class="p-2">@item.Accounttype</td>
+                    <td class="p-2">@item.AccountPOC</td>
+                    <td class="p-2">@item.Phone</td>
+                    <td class="p-2"></td>
+                    <td class="p-2"></td>
+                    @if(item.Accounttype == "admin")
+                    {
+                        <td class="p-2"><a asp-action="AdminProfileEdit" asp-controller="Admin" asp-route-Adminid="@item.AccId" class="btn btn-outline-info">Edit</a></td>
+
+                    }
+                    else
+                    {
+                        <td class="p-2"><a asp-action="EditProvider" asp-controller="Admin" asp-route-Phyid="@item.AccId" class="btn btn-outline-info">Edit</a></td>
+
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

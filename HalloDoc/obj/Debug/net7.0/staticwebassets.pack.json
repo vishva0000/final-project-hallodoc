@@ -1,0 +1,469 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\HalloDoc.bundle.scp.css",
+      "PackagePath": "staticwebassets\\HalloDoc.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\Rotativa\\wkhtmltopdf.exe",
+      "PackagePath": "staticwebassets\\Rotativa\\wkhtmltopdf.exe"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\css\\Calender.css",
+      "PackagePath": "staticwebassets\\css\\Calender.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\css\\admin.css",
+      "PackagePath": "staticwebassets\\css\\admin.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\images\\ProfilePhoto.png",
+      "PackagePath": "staticwebassets\\images\\ProfilePhoto.png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\images\\background.jpg",
+      "PackagePath": "staticwebassets\\images\\background.jpg"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\images\\logo.png",
+      "PackagePath": "staticwebassets\\images\\logo.png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\js\\Scheduling.js",
+      "PackagePath": "staticwebassets\\js\\Scheduling.js"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\js\\SchedulingForProvider.js",
+      "PackagePath": "staticwebassets\\js\\SchedulingForProvider.js"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\js\\Theme.js",
+      "PackagePath": "staticwebassets\\js\\Theme.js"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\CreateAdmin.png",
+      "PackagePath": "staticwebassets\\uploads\\CreateAdmin.png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\CreateProvider.png",
+      "PackagePath": "staticwebassets\\uploads\\CreateProvider.png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Encounter_Form (4).pdf",
+      "PackagePath": "staticwebassets\\uploads\\Encounter_Form (4).pdf"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Family\\Screenshot (41).png",
+      "PackagePath": "staticwebassets\\uploads\\Family\\Screenshot (41).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Family\\Screenshot (42).png",
+      "PackagePath": "staticwebassets\\uploads\\Family\\Screenshot (42).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Family\\Screenshot (43).png",
+      "PackagePath": "staticwebassets\\uploads\\Family\\Screenshot (43).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Patient\\Screenshot (1).png",
+      "PackagePath": "staticwebassets\\uploads\\Patient\\Screenshot (1).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Patient\\Screenshot (10).png",
+      "PackagePath": "staticwebassets\\uploads\\Patient\\Screenshot (10).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Patient\\Screenshot (11).png",
+      "PackagePath": "staticwebassets\\uploads\\Patient\\Screenshot (11).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Physician\\Physician3\\BackgroundCheck_e830.PNG",
+      "PackagePath": "staticwebassets\\uploads\\Physician\\Physician3\\BackgroundCheck_e830.PNG"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Physician\\Physician4\\BackgroundCheck_6787.jpg",
+      "PackagePath": "staticwebassets\\uploads\\Physician\\Physician4\\BackgroundCheck_6787.jpg"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Physician\\Physician4\\IndependentContract_6c90.jpg",
+      "PackagePath": "staticwebassets\\uploads\\Physician\\Physician4\\IndependentContract_6c90.jpg"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Physician\\Suraj.PNG",
+      "PackagePath": "staticwebassets\\uploads\\Physician\\Suraj.PNG"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Physician\\dhara.PNG",
+      "PackagePath": "staticwebassets\\uploads\\Physician\\dhara.PNG"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Physician\\dharaphoto.PNG",
+      "PackagePath": "staticwebassets\\uploads\\Physician\\dharaphoto.PNG"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Physician\\manan.PNG",
+      "PackagePath": "staticwebassets\\uploads\\Physician\\manan.PNG"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Physician\\photo_3.jpg",
+      "PackagePath": "staticwebassets\\uploads\\Physician\\photo_3.jpg"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (1).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (1).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (10) (1).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (10) (1).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (10).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (10).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (11).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (11).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (124).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (124).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (139).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (139).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (140).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (140).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (146) (5).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (146) (5).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (146).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (146).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (147).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (147).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (155).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (155).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (16).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (16).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (17).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (17).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (19).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (19).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (2).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (2).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (21).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (21).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (24).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (24).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (3).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (3).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (36).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (36).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (4).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (4).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (5).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (5).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (69).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (69).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (70).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (70).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\Screenshot (74).png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot (74).png"
+    },
+    {
+      "Id": "D:\\Vishva\\HelloDoc\\HalloDoc\\wwwroot\\uploads\\dharaphoto.PNG",
+      "PackagePath": "staticwebassets\\uploads\\dharaphoto.PNG"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.HalloDoc.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.HalloDoc.props",
+      "PackagePath": "build\\HalloDoc.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.HalloDoc.props",
+      "PackagePath": "buildMultiTargeting\\HalloDoc.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.HalloDoc.props",
+      "PackagePath": "buildTransitive\\HalloDoc.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

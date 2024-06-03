@@ -1,0 +1,75 @@
+﻿@model DataLayer.DTO.CreatePatient
+@{
+    Layout = "_Layout";
+}
+
+<div class="d-flex justify-content-center mt-5">
+    <form asp-action="CreatePatient">
+        <div style ="width:290px;"class="mt-5 pt-5 ">
+            <button class="back-btn rounded mb-3" onclick="back()">&lt Back</button>
+
+            <h2 class="text-center m-2">Create Account</h2>
+            <br />
+            <div class="input-group mb-3 border rounded">
+                <input type="text"
+                    asp-for="Email"
+                       placeholder="Email"
+                       class="form-control outlined-input"
+                       aria-describedby="basic-addon2" />
+                <button class="btn" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="16"
+                         height="16"
+                         fill="currentColor"
+                         class="bi bi-person-circle"
+                         viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                        <path fill-rule="evenodd"
+                              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                    </svg>
+                </button>
+
+
+            </div>
+            <span class="text-danger">
+                @Html.ValidationMessage("Email")
+
+            </span>
+
+            <div class="">
+                <div class="form-floating mb-3">
+                    <input type="password"
+                           class="form-control"
+                           id="password"
+                           asp-for="Password"
+                           placeholder="name@example.com" />
+                    <label for="Password">Password</label>
+                </div>
+                <span class="text-danger">
+                    @Html.ValidationMessage("Password")
+
+                </span>
+            </div>
+            <div class="">
+                <div class="form-floating mb-3">
+                    <input type="password"
+                           class="form-control"
+                           id="confirmPassword"
+                           asp-for="ConfirmPassword"
+                           placeholder="" />
+                    <label for="confirm">Confirm Password</label>
+                </div>
+                <span class="text-danger">
+                    @Html.ValidationMessage("ConfirmPassword")
+
+                </span>
+            </div>
+            <button type="submit"
+                    class="btn blue-background text-light btn-lg btn-block w-100">
+                Create
+            </button>
+    </form>
+    <br />
+    <br />
+</div>
+</div>

@@ -1,0 +1,292 @@
+﻿@model List<DataLayer.DTO.AdminDTO.PatientRecordData>
+@{
+    Layout = "_AdminPhysicianHeader";
+    int i = 1;
+}
+<div>
+  
+    <div class="container-fluid mt-3">
+        <div class="d-inline-flex align-items-center w-100">
+            <div>
+                <p class="fw-bold fs-4">Patient Record</p>
+            </div>
+            <div class="flex-grow-1 d-flex justify-content-end">
+                <button class="  back-btn btn-outline-info back  rounded p-2 "
+                        onclick="back()">
+                    &lt Back
+                </button>
+            </div>
+        </div>
+
+        <div class="mt-2 bg-white rounded shadow">
+            <div class="pt-4 table-responsive d-lg-flex d-none">
+                <table class="table ">
+                    <thead>
+                        <tr class="bg-light">
+                            <th>Client/Menber</th>
+                            <th>Created Date</th>
+                            <th>Confirmation</th>
+                            <th>Provider Name</th>
+                            <th>Conclude Date</th>
+                            <th>Status</th>
+                            <th>Final Report</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count > 0)
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.CreatedDate.ToShortDateString()</td>
+                                    <td>@item.ConfirmationNumber</td>
+                                    <td>@item.ProviderName</td>
+                                    <td>@item.ConcludeDate.ToShortDateString()</td>
+
+                                    <td>
+                                        @if (item.Status == 1)
+                                        {
+                                            <span>New</span>
+                                        }
+                                        else if (item.Status == 2)
+                                        {
+                                            <span>Pending</span>
+
+                                        }
+                                        else if (item.Status == 4)
+                                        {
+                                            <span>Active</span>
+
+                                        }
+                                        else if (item.Status == 5)
+                                        {
+                                            <span>Active</span>
+
+                                        }
+                                        else if (item.Status == 6)
+                                        {
+                                            <span>Conclude</span>
+
+                                        }
+                                        else if (item.Status == 3)
+                                        {
+                                            <span>To Close</span>
+
+                                        }
+                                        else if (item.Status == 7)
+                                        {
+                                            <span>To Close</span>
+
+                                        }
+                                        else if (item.Status == 8)
+                                        {
+                                            <span>To Close</span>
+
+                                        }
+                                        else if (item.Status == 9)
+                                        {
+                                            <span>Unpaid</span>
+
+                                        }
+                                        else if (item.Status == 10)
+                                        {
+                                            <span>Closed</span>
+
+                                        }
+                                    </td>
+                                    <td>-</td>
+                                    <td>
+
+                                        <button class="btn btn-outline-dark  " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li class="">
+                                                <a class="btn  dropdown-item" asp-controller="Admin" asp-action="ViewCase" asp-route-reqId="@item.requestId">
+                                                    View Case
+                                                </a>
+                                                <a class="btn dropdown-item" asp-controller="Admin" asp-action="ViewUploads" asp-route-viewid="@item.requestId">
+                                                    @item.DocCount  <span>Document</span>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td><p>No data found</p></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-lg-none">
+                <br>
+                @if (Model.Count > 0)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <div class="accordion  " id="accordionExample">
+
+                            <div class="accordion-item accordian-back ">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button accordian-back collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#id-@i" aria-expanded="false" aria-controls="collapseTwo">
+                                        <div>
+                                            <p>@item.Name</p>
+                                            <p>@item.ConfirmationNumber</p>
+                                        </div>
+
+
+
+
+                                    </button>
+                                </h2>
+
+                                <div id="id-@i" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+
+
+                                    <div class="accordion-body pt-0">
+                                        <div class="mt-2">
+                                            
+                                            <div class="d-flex">
+                                                <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                                     class="border-info d-flex justify-content-center me-2 align-items-center">
+                                                    <i class="fa-regular fa-calendar-days text-info"></i>
+                                                </div>
+                                                <p class="mt-1">
+                                                    <span class="text-muted">Created Date:</span>@if (item.CreatedDate != null)
+                                                    {
+                                                        @item.CreatedDate.ToShortDateString()
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </p>
+                                            </div>
+                                            <div class="d-flex">
+                                                <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                                     class="border-info d-flex justify-content-center me-2 align-items-center">
+                                                    <i class="fa-solid fa-user-doctor text-info"></i>
+                                                </div>
+                                                <p class="mt-1"><span class="text-muted">Provider:</span> @item.ProviderName</p>
+                                            </div>
+                                            <div class="d-flex">
+                                                <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                                     class="border-info d-flex justify-content-center me-2 align-items-center">
+                                                    <i class="fa-regular fa-calendar-days text-info"></i>
+
+                                                </div>
+                                                <p class="mt-1">
+                                                    <span class="text-muted">Conclude Date:</span>@if (item.ConcludeDate != null)
+                                                    {
+                                                        @item.ConcludeDate.ToShortDateString()
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>-</span>
+                                                    }
+                                                </p>
+                                            </div>                                           
+                                            <div class="d-flex">
+                                                <div style="border: 2px solid; border-radius:1000px; width:33px; height:33px"
+                                                     class="border-info d-flex justify-content-center me-2 align-items-center">
+                                                    <i class="fa-solid fa-check text-info"></i>
+                                                </div>
+                                                <p class="mt-1">
+                                                    <span class="text-muted">Request Status:</span>
+                                                    @if (item.Status == 1)
+                                                    {
+                                                        <span>New</span>
+                                                    }
+                                                    else if (item.Status == 2)
+                                                    {
+                                                        <span>Pending</span>
+
+                                                    }
+                                                    else if (item.Status == 4)
+                                                    {
+                                                        <span>Active</span>
+
+                                                    }
+                                                    else if (item.Status == 5)
+                                                    {
+                                                        <span>Active</span>
+
+                                                    }
+                                                    else if (item.Status == 6)
+                                                    {
+                                                        <span>Conclude</span>
+
+                                                    }
+                                                    else if (item.Status == 3)
+                                                    {
+                                                        <span>To Close</span>
+
+                                                    }
+                                                    else if (item.Status == 7)
+                                                    {
+                                                        <span>To Close</span>
+
+                                                    }
+                                                    else if (item.Status == 8)
+                                                    {
+                                                        <span>To Close</span>
+
+                                                    }
+                                                    else if (item.Status == 9)
+                                                    {
+                                                        <span>Unpaid</span>
+
+                                                    }
+                                                    else if (item.Status == 10)
+                                                    {
+                                                        <span>Closed</span>
+
+                                                    }
+                                                </p>
+                                            </div>
+                                            <div class="m-2">
+                                                <a class="btn btn-outline-info w-100" asp-controller="Admin" asp-action="ViewCase" asp-route-reqId="@item.requestId">View Case</a>
+                                            </div>  
+                                            <div class="m-2">
+                                                <a class="btn btn-outline-info w-100" asp-controller="Admin" asp-action="ViewUploads" asp-route-viewid="@item.requestId"> (@item.DocCount) <span> Documents</span></a>
+                                            </div>
+                                            
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        i++;
+                    }
+                }
+                else
+                {
+                    <p>No data found</p>
+                }
+
+                <br>
+
+            </div>
+        </div>
+
+    </div>
+</div>

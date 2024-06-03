@@ -1,0 +1,55 @@
+﻿@model List<DataLayer.DTO.AdminDTO.VendorsData>
+
+<div>
+    <table class="table table-responsive">
+        <thead class="bg-light">
+            <tr>
+                <th>Profession</th>
+                <th>Business Name</th>
+                <th>Email</th>
+                <th>Fax Number</th>
+                <th>Phone Number</th>
+                <th>Business Contact</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count > 0)
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.profession</td>
+
+                        <td>@item.vendorName</td>
+                        <td>@item.email</td>
+                        <td>@item.faxNumber</td>
+                        <td>@item.phoneNumber</td>
+                        <td>@item.businessContact</td>
+                        <td>
+                            <div>
+                                <a class="btn btn-outline-info" asp-action="UpdateBusiness" asp-controller="Admin" asp-route-vendorid="@item.vendorId">Edit</a>
+                                <button class="btn btn-outline-info delete" data-id="@item.vendorId">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td><p>No data Found</p></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+           
+        </tbody>
+    </table>
+</div>
+
+                       

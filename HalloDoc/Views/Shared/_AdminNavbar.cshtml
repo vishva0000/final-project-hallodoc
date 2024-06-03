@@ -1,0 +1,219 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    string activeNav = ViewData["Active"] as string;
+    string subNav = ViewData["SubMenu"] as string;
+}
+<div>
+    <div class="d-none d-lg-flex shadow bg-white">
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse bg-white" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto nav-underline bg-white">
+                    <li class="nav-item ">
+                        <a class="nav-link @(activeNav=="Dashboard"?"active":"") " asp-action="AdminDashboard" asp-controller="admin">Dashboard </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  @(activeNav=="ProviderLocation"?"active":"")" asp-action="ProviderLocation" asp-controller="Admin">Provider Location</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  @(activeNav=="Profile"?"active":"")" asp-action="Profile" asp-controller="Admin">My Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button class="nav-link  @(activeNav=="Provider"?"active":"")" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Provider
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li class="">
+                                    <a class=" btn dropdown-item text-decoration-none   @(subNav=="Providers"?"active":"")" asp-action="Providers" asp-controller="Admin">Providers</a>
+                                </li>
+                                <li class="">
+
+                                    <a class=" btn dropdown-item text-decoration-none @(subNav=="Scheduling"?"active":"") " asp-action="Scheduling" asp-controller="Admin">Scheduling</a>
+                                </li>
+                                <li class="">
+                                    <a class=" btn dropdown-item text-decoration-none @(subNav=="Invoicing"?"active":"")">Invoicing</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        @* <a class="nav-link" asp-action="Providers" asp-controller="Admin">Providers</a> *@
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @(activeNav=="Partners"?"active":"")" asp-action="Vendors" asp-controller="Admin">Partners</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button class="nav-link  @(activeNav=="Access"?"active":"") " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Access
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li class="">
+                                    <a class=" btn dropdown-item text-decoration-none  @(subNav=="Account"?"active":"")" asp-action="ManageAccess" asp-controller="Admin">
+                                        Account
+                                    </a>
+
+                                </li>
+                                <li class="">
+                                    <a asp-action="UserAccess" asp-controller="Admin" class=" btn dropdown-item text-decoration-none @(subNav=="User"?"active":"")">
+                                        User
+                                    </a>
+
+                                </li>
+
+
+                            </ul>
+                        </div>
+                        @* <a class="nav-link" asp-action="Providers" asp-controller="Admin">Providers</a> *@
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button class="nav-link @(activeNav=="Records"?"active":"")" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Records
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li class="">
+                                    <a class=" btn dropdown-item text-decoration-none @(subNav=="Search"?"active":"")" asp-action="SearchRecords" asp-controller="Admin">Search Records</a>
+                                </li>
+                                <li class="">
+
+                                    <a class=" btn dropdown-item text-decoration-none @(subNav=="Email"?"active":"")" asp-action="EmailLogs" asp-controller="Admin">Email Logs</a>
+                                </li>
+                                <li class="">
+                                    <a class=" btn dropdown-item text-decoration-none @(subNav=="SMS"?"active":"")" asp-action="SMSLogs" asp-controller="Admin">SMS Logs</a>
+                                </li>
+                                <li class="">
+                                    <a class=" btn dropdown-item text-decoration-none @(subNav=="Histroy"?"active":"")" asp-action="PatientHistroy" asp-controller="Admin">Patient Records</a>
+                                </li>
+                                <li class="">
+                                    <a class=" btn dropdown-item text-decoration-none @(subNav=="Block"?"active":"")" asp-action="BlockedHistroy" asp-controller="Admin">Blocked History</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        @* <a class="nav-link" asp-action="Providers" asp-controller="Admin">Providers</a> *@
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+
+    </div>
+
+    <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasSidebarLabel"><img style="width:70px;" class="largeLogo align-content-center" src="~/images/logo.png" alt="Logo" /></h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body aside-cont">
+            <ul class="list-group">
+                <li class="list-group-item @(activeNav=="Dashboard"?"nav-active":"") ">
+                    <a class="nav-link fs-5 fw-semibo  ps-4" id="Dashboard-Page" asp-action="AdminDashboard" asp-controller="Admin">Dashboard</a>
+                </li>
+                <li class="list-group-item @(activeNav=="ProviderLoction"?"nav-active":"") ">
+                    <a class="nav-link fs-5  ps-4" id="Location-Page" asp-action="ProviderLocation" asp-controller="Admin">Provider Location</a>
+                </li>
+                <li class="list-group-item  @(activeNav=="ProviderLoction"?"nav-active":"") ">
+                    <a class="nav-link fs-5  ps-4" id="Profile-Page" asp-action="Profile" asp-controller="Admin">My Profile</a>
+                </li>
+                <li class="list-group-item  @(activeNav=="Provider"?"nav-active":"")  ">
+                    <div class="dropdown nav-link fs-5 text-dark ps-4">
+                        <button class="nav-link  " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Provider
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li class="@(subNav=="Providers"?"nav-active":"")">
+                                <button class="btn dropdown-item ">
+                                    <a class="text-decoration-none text-dark" asp-action="Providers" asp-controller="Admin">Providers</a>
+                                </button>
+                            </li>
+                            <li class="@(subNav=="Scheduling"?"nav-active":"")">
+                                <button class="btn dropdown-item ">
+                                    <a class="text-decoration-none text-dark" asp-action="Scheduling" asp-controller="Admin">Scheduling</a>
+                                </button>
+                            </li>
+                            <li class="@(subNav=="Invoicing"?"nav-active":"")">
+                                <button class="btn dropdown-item ">
+                                    <a class="text-decoration-none text-dark">Invoicing</a>
+                                </button>
+                            </li>
+
+                        </ul>
+                    </div>
+                    @* <a class="nav-link fs-5 text-dark ps-4" id="Provider-Page" asp-action="Providers" asp-controller="Admin">Providers</a> *@
+                </li>
+                <li class="list-group-item    @(activeNav=="Partners"?"nav-active":"")">
+                    <a class="nav-link    fs-5  ps-4" asp-action="Vendors" asp-controller="Admin">Partners</a>
+                </li>
+                <li class="list-group-item   @(activeNav=="Access"?"nav-active":"") ">
+                    <div class="dropdown nav-link fs-5 text-dark ps-4">
+                        <button class="nav-link " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Access
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li class="@(subNav=="Account"?"nav-active":"")">
+                                <button class="btn dropdown-item ">
+                                    <a class="text-decoration-none " asp-action="ManageAccess" asp-controller="Admin">Account</a>
+                                </button>
+                            </li>
+                            <li class="@(subNav=="User"?"nav-active":"")">
+                                <button class="btn dropdown-item">
+                                    <a class="text-decoration-none text-dark" asp-action="UserAccess" asp-controller="Admin">User</a>
+                                </button>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                    @* <a class="nav-link fs-5 text-dark ps-4" id="Provider-Page" asp-action="Providers" asp-controller="Admin">Providers</a> *@
+                </li>
+
+                <li class="list-group-item   @(activeNav=="Records"?"nav-active":"") ">
+                    <div class="dropdown nav-link fs-5  ps-4">
+                        <button class="nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Records
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li class="@(subNav=="Search"?"nav-active":"")">
+                                <button class="btn dropdown-item ">
+                                    <a class="text-decoration-none text-dark" asp-action="SearchRecords" asp-controller="Admin">Search Records</a>
+                                </button>
+                            </li>
+                            <li class="@(subNav=="Email"?"nav-active":"")">
+                                <button class="btn dropdown-item ">
+                                    <a class="text-decoration-none text-dark" asp-action="EmailLogs" asp-controller="Admin">Email Logs</a>
+                                </button>
+                            </li>
+                            <li class="@(subNav=="SMS"?"nav-active":"")">
+                                <button class="btn dropdown-item ">
+                                    <a class="text-decoration-none text-dark" asp-action="SMSLogs" asp-controller="Admin">SMS Logs</a>
+                                </button>
+                            </li>
+
+                            <li class="@(subNav=="Histroy"?"nav-active":"")">
+                                <button class="btn dropdown-item ">
+                                    <a class="text-decoration-none text-dark" asp-action="PatientHistroy" asp-controller="Admin">Patient Records</a>
+                                </button>
+                            </li>
+                            <li class="@(subNav=="BLock"?"nav-active":"")">
+                                <button class="btn dropdown-item">
+                                    <a class="text-decoration-none text-dark " asp-action="BlockedHistroy" asp-controller="Admin">Blocked History</a>
+                                </button>
+                            </li>
+
+                        </ul>
+                    </div>
+                    @* <a class="nav-link fs-5 text-dark ps-4" id="Provider-Page" asp-action="Providers" asp-controller="Admin">Providers</a> *@
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
